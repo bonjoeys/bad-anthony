@@ -1,10 +1,10 @@
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Bad sur loire</title>
-    <!-- NOUVEAU: Ajout noindex, nofollow -->
     <meta name="robots" content="noindex, nofollow">
-    <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Police Inter (similaire à l'original) */
@@ -53,14 +53,12 @@
 <body class="bg-gray-100">
 
     <div class="flex h-screen bg-gray-100">
-        <!-- Barre latérale de navigation -->
         <nav class="w-64 bg-gray-900 text-white flex flex-col flex-shrink-0">
             <div class="p-4 border-b border-gray-700">
                 <h2 class="text-xl font-bold">Mon Bad sur loire</h2>
                 <span class="text-sm text-gray-400">Tournoi 2025-26</span>
             </div>
             
-            <!-- Navigation principale -->
             <div class="flex-1 p-4 space-y-2">
                 <button id="nav-players-btn"
                     class="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-150 bg-blue-600">
@@ -71,7 +69,6 @@
                     Gérer les Tournois
                 </button>
 
-                <!-- Liste des tournois créés (vos "onglets") -->
                 <div class="pt-4 border-t border-gray-700">
                     <h3 class="px-3 text-sm font-semibold text-gray-400 uppercase tracking-wider">Tableaux</h3>
                     <div id="sidebar-tournaments-list" class="mt-2 space-y-1">
@@ -80,7 +77,6 @@
                 </div>
             </div>
             
-            <!-- Statut de la connexion -->
             <div class="p-4 border-t border-gray-700">
                 <div id="auth-status-connected" class="">
                     <div class="text-xs text-green-400">Connecté (Local)</div>
@@ -92,20 +88,16 @@
             </div>
         </nav>
 
-        <!-- Contenu principal -->
         <main class="flex-1 p-8 overflow-y-auto">
             
-            <!-- Vue: Gestion des Joueurs ("base des inscris") -->
             <div id="view-players" class="page-view max-w-6xl mx-auto">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-3xl font-bold text-gray-800">Gestion des Joueurs</h1>
                     <div class="flex items-center space-x-4">
-                        <!-- Champ de recherche -->
                         <div class="flex items-center">
                              <input type="text" id="search-players-input" placeholder="Rechercher (nom, prénom, licence)..."
                                 class="px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
                         </div>
-                        <!-- FIN Champ de recherche -->
                         <div class="flex items-center space-x-2">
                             <label for="sort-players" class="text-sm font-medium text-gray-700">Trier par :</label>
                             <select id="sort-players-select"
@@ -127,6 +119,7 @@
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prénom</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Niveau</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Inscription</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">N° Licence</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Club</th>
@@ -136,14 +129,13 @@
                         </thead>
                         <tbody id="players-table-body" class="bg-white divide-y divide-gray-200">
                             <tr>
-                                <td colspan="7" class="px-6 py-12 text-center text-gray-500">Chargement des joueurs...</td>
+                                <td colspan="8" class="px-6 py-12 text-center text-gray-500">Chargement des joueurs...</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Vue: Gestion des Tournois (les "onglets") -->
             <div id="view-tournaments" class="page-view hidden max-w-6xl mx-auto">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-3xl font-bold text-gray-800">Gestion des Tableaux (Tournois)</h1>
@@ -169,7 +161,6 @@
                 </div>
             </div>
 
-            <!-- Vue: Détail d'un Tournoi (participants) -->
             <div id="view-tournament-detail" class="page-view hidden max-w-6xl mx-auto">
                 <div class="flex justify-between items-center mb-6">
                     <div>
@@ -182,11 +173,9 @@
                     </button>
                 </div>
                 <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <table class="w-full"> <!-- Pas de divide-y ici pour gérer les paires -->
-                        <thead class="bg-gray-50">
+                    <table class="w-full"> <thead class="bg-gray-50">
                             <tr>
-                                <th class="w-5 px-6 py-3"></th> <!-- Colonne pour l'icône de paire -->
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
+                                <th class="w-5 px-6 py-3"></th> <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prénom</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">N° Licence</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Club</th>
@@ -203,9 +192,6 @@
         </main>
     </div>
 
-    <!-- ===== MODALES ===== -->
-
-    <!-- Modale: Ajout d'un nouveau joueur -->
     <div id="modal-add-player" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Ajouter un nouveau joueur</h3>
@@ -219,6 +205,23 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
                         <input type="text" id="new-player-firstname" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                     </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau</label>
+                        <select id="new-player-level" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="nc">NC</option>
+                            <option value="p12">P12</option>
+                            <option value="p11">P11</option>
+                            <option value="p10">P10</option>
+                            <option value="d9">D9</option>
+                            <option value="d8">D8</option>
+                            <option value="d7">D7</option>
+                            <option value="r6">R6</option>
+                            <option value="r5">R5</option>
+                            <option value="r4">R4</option>
+                        </select>
+                    </div>
+                    
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Date d'inscription</label>
                         <input type="date" id="new-player-regdate" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
@@ -231,7 +234,6 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Club</label>
                         <input type="text" id="new-player-club" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                     </div>
-                    <!-- Cases à cocher Souhaits -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Souhaits d'inscription</label>
                         <div class="flex items-center space-x-4 pt-1">
@@ -249,8 +251,7 @@
                             </label>
                         </div>
                     </div>
-                    <!-- FIN Cases à cocher -->
-                </div>
+                    </div>
                 <div class="mt-8 flex justify-end space-x-3">
                     <button type="button" class="modal-cancel-btn px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Annuler</button>
                     <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Enregistrer</button>
@@ -259,7 +260,6 @@
         </div>
     </div>
 
-    <!-- Modale: Ajout d'un nouveau tournoi ("onglet") -->
     <div id="modal-add-tournament" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Créer un nouveau tableau</h3>
@@ -286,7 +286,6 @@
         </div>
     </div>
 
-    <!-- Modale: Ajout d'un participant (SIMPLE) - OPTIMISÉE -->
     <div id="modal-add-participant-simple" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Ajouter des participants (Simple)</h3>
@@ -298,7 +297,6 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Joueurs disponibles</label>
                         <div id="participant-checkbox-list" class="participant-checkbox-list space-y-2">
-                            <!-- Les joueurs seront injectés ici par JS -->
                             <p class="text-sm text-gray-500 p-4 text-center">Aucun joueur disponible.</p>
                         </div>
                     </div>
@@ -311,7 +309,6 @@
         </div>
     </div>
     
-    <!-- Modale: Ajout d'une PAIRE (Double / Mixte) - OPTIMISÉE -->
     <div id="modal-add-participant-pair" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Ajouter des Paires</h3>
@@ -344,12 +341,10 @@
     </div>
 
 
-    <!-- Modale: Modifier un joueur -->
     <div id="modal-edit-player" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Modifier le joueur</h3>
             <form id="form-edit-player">
-                <!-- Champ caché pour stocker l'ID du joueur en cours de modification -->
                 <input type="hidden" id="edit-player-id">
                 
                 <div class="space-y-4">
@@ -361,6 +356,23 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
                         <input type="text" id="edit-player-firstname" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                     </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau</label>
+                        <select id="edit-player-level" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="nc">NC</option>
+                            <option value="p12">P12</option>
+                            <option value="p11">P11</option>
+                            <option value="p10">P10</option>
+                            <option value="d9">D9</option>
+                            <option value="d8">D8</option>
+                            <option value="d7">D7</option>
+                            <option value="r6">R6</option>
+                            <option value="r5">R5</option>
+                            <option value="r4">R4</option>
+                        </select>
+                    </div>
+                    
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Date d'inscription</label>
                         <input type="date" id="edit-player-regdate" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
@@ -373,7 +385,6 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Club</label>
                         <input type="text" id="edit-player-club" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                     </div>
-                    <!-- Cases à cocher Souhaits -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Souhaits d'inscription</label>
                         <div class="flex items-center space-x-4 pt-1">
@@ -391,8 +402,7 @@
                             </label>
                         </div>
                     </div>
-                    <!-- FIN Cases à cocher -->
-                </div>
+                    </div>
                 <div class="mt-8 flex justify-end space-x-3">
                     <button type="button" class="modal-cancel-btn px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Annuler</button>
                     <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Enregistrer les modifications</button>
@@ -402,25 +412,30 @@
     </div>
 
 
-    <!-- Script principal (LOCAL - SANS FIREBASE) -->
     <script type="module">
         // --- Données d'exemple (notre "base de données" locale) ---
+        // MODIFIÉ : Ajout du champ "level" et plus de joueurs
         const SAMPLE_PLAYERS = [
-          { lastName: "Martin", firstName: "Vincent", license: "07367979", club: "CEST37", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Loiseau", firstName: "Christophe", license: "07498393", club: "BCE72", registrationDate: "2025-10-02", wishesSimple: false, wishesDouble: true, wishesMixte: false },
-          { lastName: "Ravary", firstName: "Corentin", license: "07646991", club: "ASPC49", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: false, wishesMixte: false },
-          { lastName: "Taugourdeau", firstName: "Gwénaelle", license: "06746314", club: "ONEA49", registrationDate: "2025-10-03", wishesSimple: true, wishesDouble: true, wishesMixte: true },
-          { lastName: "Charron", firstName: "Alexandre", license: "06499200", club: "ASCEMMA72", registrationDate: "2025-10-02", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Molle", firstName: "Guillaume", license: "07516153", club: "ASCEMMA72", registrationDate: "2025-10-04", wishesSimple: false, wishesDouble: true, wishesMixte: false },
-          { lastName: "Fontenay", firstName: "Maxime", license: "07390128", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: false, wishesMixte: false },
-          { lastName: "Mellet", firstName: "Elie", license: "06972886", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Chaintron", firstName: "Mylène", license: "06639623", club: "TBSMC72", registrationDate: "2025-10-03", wishesSimple: false, wishesDouble: true, wishesMixte: true },
-          { lastName: "Vetu", firstName: "Marine", license: "07519726", club: "JSC72", registrationDate: "2025-10-06", wishesSimple: true, wishesDouble: false, wishesMixte: true },
-          { lastName: "Herillard", firstName: "Fabien", license: "00436837", club: "JSC72", registrationDate: "2025-10-07", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Barge", firstName: "Antony", license: "06522803", club: "IMBC92", registrationDate: "2025-10-07", wishesSimple: false, wishesDouble: true, wishesMixte: false },
-          { lastName: "Rosaenz", firstName: "Camille", license: "07562582", club: "JSC72", registrationDate: "2025-10-08", wishesSimple: true, wishesDouble: false, wishesMixte: true },
-          { lastName: "Bordeau", firstName: "Quentin", license: "06759420", club: "LPL53", registrationDate: "2025-10-09", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Bechec", firstName: "Malou", license: "07574178", club: "SCB49", registrationDate: "2025-10-10", wishesSimple: false, wishesDouble: false, wishesMixte: true },
+          { lastName: "Martin", firstName: "Vincent", level: "r6", license: "07367979", club: "CEST37", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: true, wishesMixte: true },
+          { lastName: "Loiseau", firstName: "Christophe", level: "d8", license: "07498393", club: "BCE72", registrationDate: "2025-10-02", wishesSimple: false, wishesDouble: true, wishesMixte: false },
+          { lastName: "Ravary", firstName: "Corentin", level: "r5", license: "07646991", club: "ASPC49", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: false, wishesMixte: false },
+          { lastName: "Taugourdeau", firstName: "Gwénaelle", level: "d7", license: "06746314", club: "ONEA49", registrationDate: "2025-10-03", wishesSimple: true, wishesDouble: true, wishesMixte: true },
+          { lastName: "Charron", firstName: "Alexandre", level: "r6", license: "06499200", club: "ASCEMMA72", registrationDate: "2025-10-02", wishesSimple: true, wishesDouble: true, wishesMixte: false },
+          { lastName: "Molle", firstName: "Guillaume", level: "d9", license: "07516153", club: "ASCEMMA72", registrationDate: "2025-10-04", wishesSimple: false, wishesDouble: true, wishesMixte: false },
+          { lastName: "Fontenay", firstName: "Maxime", level: "p10", license: "07390128", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: false, wishesMixte: false },
+          { lastName: "Mellet", firstName: "Elie", level: "p11", license: "06972886", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: true, wishesMixte: true },
+          { lastName: "Chaintron", firstName: "Mylène", level: "d8", license: "06639623", club: "TBSMC72", registrationDate: "2025-10-03", wishesSimple: false, wishesDouble: true, wishesMixte: true },
+          { lastName: "Vetu", firstName: "Marine", level: "p10", license: "07519726", club: "JSC72", registrationDate: "2025-10-06", wishesSimple: true, wishesDouble: true, wishesMixte: true },
+          { lastName: "Herillard", firstName: "Fabien", level: "r4", license: "00436837", club: "JSC72", registrationDate: "2025-10-07", wishesSimple: true, wishesDouble: true, wishesMixte: false },
+          { lastName: "Barge", firstName: "Antony", level: "d7", license: "06522803", club: "IMBC92", registrationDate: "2025-10-07", wishesSimple: false, wishesDouble: true, wishesMixte: false },
+          { lastName: "Rosaenz", firstName: "Camille", level: "p12", license: "07562582", club: "JSC72", registrationDate: "2025-10-08", wishesSimple: true, wishesDouble: true, wishesMixte: true },
+          { lastName: "Bordeau", firstName: "Quentin", level: "r5", license: "06759420", club: "LPL53", registrationDate: "2025-10-09", wishesSimple: true, wishesDouble: true, wishesMixte: false },
+          { lastName: "Bechec", firstName: "Malou", level: "nc", license: "07574178", club: "SCB49", registrationDate: "2025-10-10", wishesSimple: false, wishesDouble: true, wishesMixte: true },
+          { lastName: "Dubois", firstName: "Alice", level: "p10", license: "07111111", club: "BCT37", registrationDate: "2025-10-11", wishesSimple: false, wishesDouble: true, wishesMixte: true },
+          { lastName: "Petit", firstName: "Julien", level: "r4", license: "07222222", club: "ASPC49", registrationDate: "2025-10-11", wishesSimple: true, wishesDouble: true, wishesMixte: false },
+          { lastName: "Bernard", firstName: "Sophie", level: "d8", license: "07333333", club: "BCE72", registrationDate: "2025-10-12", wishesSimple: false, wishesDouble: false, wishesMixte: true },
+          { lastName: "Moreau", firstName: "David", level: "nc", license: "07444444", club: "ONEA49", registrationDate: "2025-10-12", wishesSimple: true, wishesDouble: false, wishesMixte: false },
+          { lastName: "Dupont", firstName: "Lea", level: "p11", license: "07555555", club: "JSC72", registrationDate: "2025-10-13", wishesSimple: false, wishesDouble: true, wishesMixte: false }
         ];
 
         // --- État de l'application ---
@@ -490,13 +505,56 @@
         // --- Chargement des données (simulé) ---
         function loadInitialData() {
             isLoadingPlayers = true;
-            // On simule une base de données en ajoutant un ID unique à nos données d'exemple
+            
+            // 1. Créer tous les joueurs avec des ID uniques
             allPlayers = SAMPLE_PLAYERS.map(player => ({
                 ...player,
                 id: crypto.randomUUID() // Génère un ID unique
             }));
             
             isLoadingPlayers = false;
+
+            // 2. MODIFIÉ : Créer des tournois de test
+            allTournaments = [
+                { id: crypto.randomUUID(), name: "Simple Hommes R/D", type: "simple", participants: [] },
+                { id: crypto.randomUUID(), name: "Double Dames P", type: "double", participants: [] },
+                { id: crypto.randomUUID(), name: "Mixte D/P/NC", type: "mixte", participants: [] }
+            ];
+
+            // 3. MODIFIÉ : Ajouter des participants aux tournois de test
+            try {
+                // Participants pour Simple Hommes
+                const simpleTournament = allTournaments[0];
+                const p1 = allPlayers.find(p => p.lastName === "Martin");
+                const p2 = allPlayers.find(p => p.lastName === "Ravary");
+                const p3 = allPlayers.find(p => p.lastName === "Herillard");
+                if (p1) simpleTournament.participants.push({ participantId: crypto.randomUUID(), playerId: p1.id });
+                if (p2) simpleTournament.participants.push({ participantId: crypto.randomUUID(), playerId: p2.id });
+                if (p3) simpleTournament.participants.push({ participantId: crypto.randomUUID(), playerId: p3.id });
+
+                // Participants pour Double Dames
+                const doubleTournament = allTournaments[1];
+                const p4 = allPlayers.find(p => p.lastName === "Dubois");
+                const p5 = allPlayers.find(p => p.lastName === "Dupont");
+                const p6 = allPlayers.find(p => p.lastName === "Vetu");
+                const p7 = allPlayers.find(p => p.lastName === "Rosaenz");
+                if (p4 && p5) doubleTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p4.id, player2Id: p5.id });
+                if (p6 && p7) doubleTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p6.id, player2Id: p7.id });
+
+                // Participants pour Mixte
+                const mixteTournament = allTournaments[2];
+                const p8 = allPlayers.find(p => p.lastName === "Taugourdeau");
+                const p9 = allPlayers.find(p => p.lastName === "Mellet");
+                const p10 = allPlayers.find(p => p.lastName === "Chaintron");
+                const p11 = allPlayers.find(p => p.lastName === "Bechec");
+                if (p8 && p9) mixteTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p9.id, player2Id: p8.id }); // Elie + Gwenaelle
+                if (p1 && p10) mixteTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p1.id, player2Id: p10.id }); // Vincent + Mylene
+            
+            } catch (e) {
+                console.error("Erreur lors de la création des données de test:", e);
+            }
+            
+            // 4. Rendre l'interface
             renderPlayers();
             renderTournamentsList();
             renderSidebarTournaments();
@@ -558,14 +616,17 @@
 
             if (sortedPlayers.length === 0 && !isLoadingPlayers) {
                 if (currentSearchTerm) { // Message si la recherche ne donne rien
-                     playersTableBody.innerHTML = `<tr><td colspan="7" class="px-6 py-12 text-center text-gray-500">Aucun joueur ne correspond à votre recherche.</td></tr>`;
+                     // MODIFIÉ : colspan="8"
+                     playersTableBody.innerHTML = `<tr><td colspan="8" class="px-6 py-12 text-center text-gray-500">Aucun joueur ne correspond à votre recherche.</td></tr>`;
                 } else {
-                     playersTableBody.innerHTML = `<tr><td colspan="7" class="px-6 py-12 text-center text-gray-500">Aucun joueur dans la base. Cliquez sur "+ Nouveau Joueur" pour commencer.</td></tr>`;
+                     // MODIFIÉ : colspan="8"
+                     playersTableBody.innerHTML = `<tr><td colspan="8" class="px-6 py-12 text-center text-gray-500">Aucun joueur dans la base. Cliquez sur "+ Nouveau Joueur" pour commencer.</td></tr>`;
                 }
                 return;
             }
             if (isLoadingPlayers && sortedPlayers.length === 0) {
-                 playersTableBody.innerHTML = `<tr><td colspan="7" class="px-6 py-12 text-center text-gray-500">Chargement des joueurs...</td></tr>`;
+                 // MODIFIÉ : colspan="8"
+                 playersTableBody.innerHTML = `<tr><td colspan="8" class="px-6 py-12 text-center text-gray-500">Chargement des joueurs...</td></tr>`;
                  return;
             }
 
@@ -573,6 +634,7 @@
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.lastName}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.firstName}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.level.toUpperCase()}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${formatDate(player.registrationDate)}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.license}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.club}</td>
@@ -645,8 +707,7 @@
                         
                     participantsTableBody.innerHTML = players.map(player => `
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 w-5"></td> <!-- Vide pour l'icône -->
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.lastName}</td>
+                            <td class="px-6 py-4 w-5"></td> <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.lastName}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.firstName}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.license}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.club}</td>
@@ -707,10 +768,17 @@
             
             // Activer/Désactiver le bouton d'ajout
             const addParticipantBtn = document.getElementById('show-add-participant-modal-btn');
-            addParticipantBtn.disabled = getAvailablePlayersForTournament().length < (currentTournament.type === 'simple' ? 1 : 2);
+            const availablePlayers = getAvailablePlayersForTournament();
+            
+            // MODIFIÉ : Le nombre minimum de joueurs dispo dépend aussi des SOUHAITS
+            if (currentTournament.type === 'simple') {
+                addParticipantBtn.disabled = availablePlayers.length < 1;
+            } else {
+                addParticipantBtn.disabled = availablePlayers.length < 2;
+            }
         }
         
-        // Renvoie la liste des joueurs NON ENCORE INSCRITS dans ce tournoi
+        // MODIFIÉ : Renvoie la liste des joueurs NON ENCORE INSCRITS et AYANT LE SOUHAIT
         function getAvailablePlayersForTournament() {
             if (!currentTournament) return [];
             
@@ -727,7 +795,27 @@
                 }
             });
             
-            return allPlayers.filter(p => !registeredPlayerIds.has(p.id));
+            // AJOUT : On récupère le type de tournoi
+            const tournamentType = currentTournament.type;
+
+            return allPlayers.filter(p => {
+                // 1. On filtre les joueurs déjà inscrits
+                if (registeredPlayerIds.has(p.id)) {
+                    return false;
+                }
+
+                // 2. AJOUT : On filtre selon les souhaits
+                switch (tournamentType) {
+                    case 'simple':
+                        return p.wishesSimple === true;
+                    case 'double':
+                        return p.wishesDouble === true;
+                    case 'mixte':
+                        return p.wishesMixte === true;
+                    default:
+                        return false; // Type de tournoi inconnu
+                }
+            });
         }
         
         // Remplit les listes déroulantes/checkboxes des modales d'ajout
@@ -738,15 +826,16 @@
             availablePlayers.sort((a,b) => a.lastName.localeCompare(b.lastName)); // Trier la liste
 
             if (currentTournament.type === 'simple') {
-                // NOUVEAU: Modale Simple (Cases à cocher)
+                // Modale Simple (Cases à cocher)
                 if (availablePlayers.length === 0) {
-                    participantCheckboxList.innerHTML = `<p class="text-sm text-gray-500 p-4 text-center">Tous les joueurs sont inscrits.</p>`;
+                    participantCheckboxList.innerHTML = `<p class="text-sm text-gray-500 p-4 text-center">Aucun joueur disponible (vérifiez les inscrits ou leurs 'souhaits').</p>`;
                     addParticipantSimpleSubmitBtn.disabled = true;
                 } else {
+                    // MODIFIÉ : Ajout de p.level
                     participantCheckboxList.innerHTML = availablePlayers.map(p => `
                         <label class="flex items-center text-sm text-gray-700 p-2 rounded hover:bg-gray-100">
                             <input type="checkbox" data-id="${p.id}" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-3">
-                            ${p.lastName} ${p.firstName} <span class="text-gray-500 ml-2">(${p.club})</span>
+                            ${p.lastName} ${p.firstName} <span class="text-gray-500 ml-2">(${p.level.toUpperCase()} / ${p.club})</span>
                         </label>
                     `).join('');
                     addParticipantSimpleSubmitBtn.disabled = false;
@@ -755,8 +844,9 @@
 
             } else {
                 // Modale Paire (Dropdowns)
+                // MODIFIÉ : Ajout de p.level
                 const optionsHtml = availablePlayers
-                    .map(p => `<option value="${p.id}">${p.lastName} ${p.firstName} (${p.club})</option>`).join('');
+                    .map(p => `<option value="${p.id}">${p.lastName} ${p.firstName} (${p.level.toUpperCase()} / ${p.club})</option>`).join('');
                     
                 pairPlayer1Select.innerHTML = `<option value="" disabled selected>Sélectionner le joueur 1...</option>` + optionsHtml;
                 pairPlayer2Select.innerHTML = `<option value="" disabled selected>Sélectionner le joueur 2...</option>` + optionsHtml;
@@ -931,10 +1021,12 @@
         // --- Actions (Joueurs) ---
         function handleAddNewPlayer(event) {
             event.preventDefault();
+            // MODIFIÉ : Ajout de "level"
             const newPlayer = {
                 id: crypto.randomUUID(),
                 lastName: document.getElementById('new-player-lastname').value,
                 firstName: document.getElementById('new-player-firstname').value,
+                level: document.getElementById('new-player-level').value, // AJOUTÉ
                 registrationDate: document.getElementById('new-player-regdate').value,
                 license: document.getElementById('new-player-license').value,
                 club: document.getElementById('new-player-club').value,
@@ -943,7 +1035,8 @@
                 wishesMixte: document.getElementById('new-player-wishes-mixte').checked,
             };
             
-            if (!newPlayer.firstName || !newPlayer.lastName || !newPlayer.license || !newPlayer.club || !newPlayer.registrationDate) {
+            // MODIFIÉ : Validation de "level"
+            if (!newPlayer.firstName || !newPlayer.lastName || !newPlayer.license || !newPlayer.club || !newPlayer.registrationDate || !newPlayer.level) {
                 console.error("Données incomplètes pour ajouter un joueur.");
                 return;
             }
@@ -962,6 +1055,7 @@
             document.getElementById('edit-player-id').value = player.id;
             document.getElementById('edit-player-lastname').value = player.lastName;
             document.getElementById('edit-player-firstname').value = player.firstName;
+            document.getElementById('edit-player-level').value = player.level; // AJOUTÉ
             document.getElementById('edit-player-regdate').value = player.registrationDate;
             document.getElementById('edit-player-license').value = player.license;
             document.getElementById('edit-player-club').value = player.club;
@@ -983,10 +1077,12 @@
                 return;
             }
             
+            // MODIFIÉ : Ajout de "level"
             allPlayers[playerIndex] = {
                 id: playerId,
                 lastName: document.getElementById('edit-player-lastname').value,
                 firstName: document.getElementById('edit-player-firstname').value,
+                level: document.getElementById('edit-player-level').value, // AJOUTÉ
                 registrationDate: document.getElementById('edit-player-regdate').value,
                 license: document.getElementById('edit-player-license').value,
                 club: document.getElementById('edit-player-club').value,
@@ -1143,5 +1239,3 @@
 
 </body>
 </html>
-
-
