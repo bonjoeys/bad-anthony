@@ -93,24 +93,43 @@
             <div id="view-players" class="page-view max-w-6xl mx-auto">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-3xl font-bold text-gray-800">Gestion des Joueurs</h1>
-                    <div class="flex items-center space-x-4">
-                        <div class="flex items-center">
-                             <input type="text" id="search-players-input" placeholder="Rechercher (nom, prénom, licence)..."
-                                class="px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                    <button id="show-add-player-modal-btn"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform duration-150 active:scale-95">
+                        + Nouveau Joueur
+                    </button>
+                </div>
+
+                <div class="mb-4 p-4 bg-white rounded-lg shadow flex flex-wrap gap-4 items-center">
+                    <div class="flex-1 min-w-[250px]">
+                        <label for="search-players-input" class="block text-sm font-medium text-gray-700 mb-1">Rechercher</label>
+                         <input type="text" id="search-players-input" placeholder="Nom, prénom, licence..."
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div class="flex-shrink-0">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Filtrer par Souhaits</label>
+                        <div class="flex items-center space-x-4 pt-2">
+                            <label class="flex items-center text-sm text-gray-700">
+                                <input type="checkbox" id="filter-wish-simple" class="filter-wish-cb h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-1.5">
+                                Simple
+                            </label>
+                            <label class="flex items-center text-sm text-gray-700">
+                                <input type="checkbox" id="filter-wish-double" class="filter-wish-cb h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-1.5">
+                                Double
+                            </label>
+                            <label class="flex items-center text-sm text-gray-700">
+                                <input type="checkbox" id="filter-wish-mixte" class="filter-wish-cb h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-1.5">
+                                Mixte
+                            </label>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <label for="sort-players" class="text-sm font-medium text-gray-700">Trier par :</label>
-                            <select id="sort-players-select"
-                                class="px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-                                <option value="alpha-asc">Alphabétique (A-Z)</option>
-                                <option value="date-desc">Date d'inscription (Plus récents)</option>
-                                <option value="date-asc">Date d'inscription (Plus anciens)</option>
-                            </select>
-                        </div>
-                        <button id="show-add-player-modal-btn"
-                            class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform duration-150 active:scale-95">
-                            + Nouveau Joueur
-                        </button>
+                    </div>
+                    <div class="flex-shrink-0 min-w-[200px]">
+                        <label for="sort-players-select" class="block text-sm font-medium text-gray-700 mb-1">Trier par</label>
+                        <select id="sort-players-select"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                            <option value="alpha-asc">Alphabétique (A-Z)</option>
+                            <option value="date-desc">Date d'inscription (Plus récents)</option>
+                            <option value="date-asc">Date d'inscription (Plus anciens)</option>
+                        </select>
                     </div>
                 </div>
                 <div class="bg-white shadow-xl rounded-lg overflow-hidden">
@@ -177,13 +196,14 @@
                             <tr>
                                 <th class="w-5 px-6 py-3"></th> <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prénom</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Niveau</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">N° Licence</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Club</th>
                                 <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="participants-table-body" class="bg-white divide-y divide-gray-200">
-                            <tr><td colspan="6" class="px-6 py-12 text-center text-gray-500">Aucun participant dans ce tableau.</td></tr>
+                            <tr><td colspan="7" class="px-6 py-12 text-center text-gray-500">Aucun participant dans ce tableau.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -414,7 +434,6 @@
 
     <script type="module">
         // --- Données d'exemple (notre "base de données" locale) ---
-        // MODIFIÉ : Ajout du champ "level" et plus de joueurs
         const SAMPLE_PLAYERS = [
           { lastName: "Martin", firstName: "Vincent", level: "r6", license: "07367979", club: "CEST37", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: true, wishesMixte: true },
           { lastName: "Loiseau", firstName: "Christophe", level: "d8", license: "07498393", club: "BCE72", registrationDate: "2025-10-02", wishesSimple: false, wishesDouble: true, wishesMixte: false },
@@ -444,6 +463,12 @@
         let currentTournament = null;
         let currentSortMode = 'alpha-asc';
         let currentSearchTerm = '';
+        // MODIFIÉ ICI : Ajout de l'état du filtre des souhaits
+        let currentWishFilters = {
+            simple: false,
+            double: false,
+            mixte: false
+        };
         let isLoadingPlayers = true;
         let activeView = 'players'; // 'players', 'tournaments', 'tournament-detail'
  
@@ -546,7 +571,6 @@
                 const p8 = allPlayers.find(p => p.lastName === "Taugourdeau");
                 const p9 = allPlayers.find(p => p.lastName === "Mellet");
                 const p10 = allPlayers.find(p => p.lastName === "Chaintron");
-                const p11 = allPlayers.find(p => p.lastName === "Bechec");
                 if (p8 && p9) mixteTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p9.id, player2Id: p8.id }); // Elie + Gwenaelle
                 if (p1 && p10) mixteTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p1.id, player2Id: p10.id }); // Vincent + Mylene
             
@@ -585,9 +609,10 @@
             return allPlayers.find(p => p.id === playerId);
         }
 
+        // MODIFIÉ ICI : Ajout du filtrage par Souhaits
         function renderPlayers() {
-            // Filtrer d'abord
-            const filteredPlayers = allPlayers.filter(player => {
+            // 1. Filtrer par Recherche
+            const searchedPlayers = allPlayers.filter(player => {
                 const searchTerm = currentSearchTerm; // Déjà en minuscules
                 const fullName = `${player.firstName || ''} ${player.lastName || ''}`.toLowerCase();
                 const license = (player.license || '').toLowerCase();
@@ -595,7 +620,23 @@
                 return fullName.includes(searchTerm) || license.includes(searchTerm);
             });
 
-            // Trier la liste filtrée
+            // 2. Filtrer par Souhaits (sur la base des résultats de recherche)
+            const filteredPlayers = searchedPlayers.filter(player => {
+                const { simple, double, mixte } = currentWishFilters;
+                
+                // Si aucun filtre n'est coché, on affiche le joueur
+                if (!simple && !double && !mixte) {
+                    return true;
+                }
+
+                // Sinon, on vérifie si le joueur correspond à AU MOINS UN filtre coché (logique OU)
+                return (simple && player.wishesSimple) ||
+                       (double && player.wishesDouble) ||
+                       (mixte && player.wishesMixte);
+            });
+
+
+            // 3. Trier la liste filtrée
             const sortedPlayers = [...filteredPlayers];
             
             switch (currentSortMode) {
@@ -615,17 +656,15 @@
             }
 
             if (sortedPlayers.length === 0 && !isLoadingPlayers) {
-                if (currentSearchTerm) { // Message si la recherche ne donne rien
-                     // MODIFIÉ : colspan="8"
-                     playersTableBody.innerHTML = `<tr><td colspan="8" class="px-6 py-12 text-center text-gray-500">Aucun joueur ne correspond à votre recherche.</td></tr>`;
+                // Message si la recherche ou le filtre ne donne rien
+                if (currentSearchTerm || currentWishFilters.simple || currentWishFilters.double || currentWishFilters.mixte) { 
+                     playersTableBody.innerHTML = `<tr><td colspan="8" class="px-6 py-12 text-center text-gray-500">Aucun joueur ne correspond à vos filtres.</td></tr>`;
                 } else {
-                     // MODIFIÉ : colspan="8"
                      playersTableBody.innerHTML = `<tr><td colspan="8" class="px-6 py-12 text-center text-gray-500">Aucun joueur dans la base. Cliquez sur "+ Nouveau Joueur" pour commencer.</td></tr>`;
                 }
                 return;
             }
             if (isLoadingPlayers && sortedPlayers.length === 0) {
-                 // MODIFIÉ : colspan="8"
                  playersTableBody.innerHTML = `<tr><td colspan="8" class="px-6 py-12 text-center text-gray-500">Chargement des joueurs...</td></tr>`;
                  return;
             }
@@ -694,7 +733,7 @@
 
             // Rendu tableau participants
             if (participants.length === 0) {
-                participantsTableBody.innerHTML = `<tr><td colspan="6" class="px-6 py-12 text-center text-gray-500">Aucun participant dans ce tableau.</td></tr>`;
+                participantsTableBody.innerHTML = `<tr><td colspan="7" class="px-6 py-12 text-center text-gray-500">Aucun participant dans ce tableau.</td></tr>`;
             } else {
                 participantsTableBody.innerHTML = ''; // Vider le tableau
                 
@@ -709,6 +748,7 @@
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 w-5"></td> <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.lastName}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.firstName}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.level.toUpperCase()}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.license}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.club}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
@@ -743,6 +783,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player1.lastName}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player1.firstName}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player1.level.toUpperCase()}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player1.license}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player1.club}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2" rowspan="2">
@@ -755,6 +796,7 @@
                             <tr class="pair-row hover:bg-gray-50">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player2.lastName}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player2.firstName}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player2.level.toUpperCase()}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player2.license}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player2.club}</td>
                             </tr>
@@ -770,7 +812,6 @@
             const addParticipantBtn = document.getElementById('show-add-participant-modal-btn');
             const availablePlayers = getAvailablePlayersForTournament();
             
-            // MODIFIÉ : Le nombre minimum de joueurs dispo dépend aussi des SOUHAITS
             if (currentTournament.type === 'simple') {
                 addParticipantBtn.disabled = availablePlayers.length < 1;
             } else {
@@ -778,7 +819,7 @@
             }
         }
         
-        // MODIFIÉ : Renvoie la liste des joueurs NON ENCORE INSCRITS et AYANT LE SOUHAIT
+        // Renvoie la liste des joueurs NON ENCORE INSCRITS et AYANT LE SOUHAIT
         function getAvailablePlayersForTournament() {
             if (!currentTournament) return [];
             
@@ -795,16 +836,12 @@
                 }
             });
             
-            // AJOUT : On récupère le type de tournoi
             const tournamentType = currentTournament.type;
 
             return allPlayers.filter(p => {
-                // 1. On filtre les joueurs déjà inscrits
                 if (registeredPlayerIds.has(p.id)) {
                     return false;
                 }
-
-                // 2. AJOUT : On filtre selon les souhaits
                 switch (tournamentType) {
                     case 'simple':
                         return p.wishesSimple === true;
@@ -813,7 +850,7 @@
                     case 'mixte':
                         return p.wishesMixte === true;
                     default:
-                        return false; // Type de tournoi inconnu
+                        return false; 
                 }
             });
         }
@@ -831,7 +868,6 @@
                     participantCheckboxList.innerHTML = `<p class="text-sm text-gray-500 p-4 text-center">Aucun joueur disponible (vérifiez les inscrits ou leurs 'souhaits').</p>`;
                     addParticipantSimpleSubmitBtn.disabled = true;
                 } else {
-                    // MODIFIÉ : Ajout de p.level
                     participantCheckboxList.innerHTML = availablePlayers.map(p => `
                         <label class="flex items-center text-sm text-gray-700 p-2 rounded hover:bg-gray-100">
                             <input type="checkbox" data-id="${p.id}" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-3">
@@ -844,15 +880,13 @@
 
             } else {
                 // Modale Paire (Dropdowns)
-                // MODIFIÉ : Ajout de p.level
                 const optionsHtml = availablePlayers
                     .map(p => `<option value="${p.id}">${p.lastName} ${p.firstName} (${p.level.toUpperCase()} / ${p.club})</option>`).join('');
                     
                 pairPlayer1Select.innerHTML = `<option value="" disabled selected>Sélectionner le joueur 1...</option>` + optionsHtml;
-                pairPlayer2Select.innerHTML = `<option value="" disabled selected>Sélectionner le joueur 2...</option>` + optionsHtml;
+                pairPlayer2Select.innerHTML = `<option value="" disabled selected>Sélectionre le joueur 2...</option>` + optionsHtml;
                 document.getElementById('modal-participant-pair-tournament-name').textContent = currentTournament.name;
                 
-                // Cacher le message de succès
                 pairAddedSuccess.classList.add('hidden');
             }
         }
@@ -866,11 +900,9 @@
             }
             activeView = viewId;
 
-            // Gérer la classe "active" des boutons de navigation
             navButtons.players.classList.toggle('bg-blue-600', viewId === 'players');
             navButtons.tournaments.classList.toggle('bg-blue-600', viewId === 'tournaments');
             
-            // Gérer la classe "active" des tournois de la sidebar
             document.querySelectorAll('.btn-sidebar-tournament').forEach(btn => {
                 btn.classList.toggle('bg-gray-700', currentTournament && btn.dataset.id === currentTournament.id);
             });
@@ -895,11 +927,11 @@
         function setupEventListeners() {
             // Navigation principale
             navButtons.players.addEventListener('click', () => {
-                currentTournament = null; // Désélectionner le tournoi
+                currentTournament = null; 
                 showView('players');
             });
             navButtons.tournaments.addEventListener('click', () => {
-                currentTournament = null; // Désélectionner le tournoi
+                currentTournament = null; 
                 showView('tournaments');
             });
 
@@ -914,20 +946,26 @@
                 currentSearchTerm = e.target.value.toLowerCase();
                 renderPlayers();
             });
+            
+            // MODIFIÉ ICI : Ajout des listeners pour les filtres de souhaits
+            document.querySelectorAll('.filter-wish-cb').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    currentWishFilters.simple = document.getElementById('filter-wish-simple').checked;
+                    currentWishFilters.double = document.getElementById('filter-wish-double').checked;
+                    currentWishFilters.mixte = document.getElementById('filter-wish-mixte').checked;
+                    renderPlayers(); // Rafraîchir la liste des joueurs
+                });
+            });
+
 
             // Boutons "Ouvrir Modale"
             document.getElementById('show-add-player-modal-btn').addEventListener('click', () => showModal('addPlayer'));
             document.getElementById('show-add-tournament-modal-btn').addEventListener('click', () => showModal('addTournament'));
             
-            // Ouvre la BONNE modale (Simple ou Paire)
             document.getElementById('show-add-participant-modal-btn').addEventListener('click', () => {
                 if (!currentTournament) return;
-                
-                // Pré-remplir les listes
                 populateParticipantDropdowns();
-                
                 if (currentTournament.type === 'simple') {
-                    // Réinitialiser les cases (au cas où)
                     participantCheckboxList.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
                     showModal('addParticipantSimple');
                 } else {
@@ -940,7 +978,6 @@
                 }
             });
             
-            // Validation de la modale Paire (pour éviter doublons)
             [pairPlayer1Select, pairPlayer2Select].forEach(select => {
                 select.addEventListener('change', () => {
                     const p1 = pairPlayer1Select.value;
@@ -948,17 +985,15 @@
                     const isValid = p1 && p2 && p1 !== p2;
                     pairWarning.classList.toggle('hidden', !p1 || !p2 || p1 !== p2);
                     document.getElementById('add-participant-pair-submit-btn').disabled = !isValid;
-                    pairAddedSuccess.classList.add('hidden'); // Cacher si on change
+                    pairAddedSuccess.classList.add('hidden'); 
                 });
             });
 
-            // Boutons "Annuler" des modales
             document.querySelectorAll('.modal-cancel-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                    hideAllModals();
                 });
             });
-            // Clic sur l'overlay pour fermer
             document.querySelectorAll('.modal-overlay').forEach(overlay => {
                 overlay.addEventListener('click', (e) => {
                     if (e.target === overlay) {
@@ -1021,12 +1056,11 @@
         // --- Actions (Joueurs) ---
         function handleAddNewPlayer(event) {
             event.preventDefault();
-            // MODIFIÉ : Ajout de "level"
             const newPlayer = {
                 id: crypto.randomUUID(),
                 lastName: document.getElementById('new-player-lastname').value,
                 firstName: document.getElementById('new-player-firstname').value,
-                level: document.getElementById('new-player-level').value, // AJOUTÉ
+                level: document.getElementById('new-player-level').value, 
                 registrationDate: document.getElementById('new-player-regdate').value,
                 license: document.getElementById('new-player-license').value,
                 club: document.getElementById('new-player-club').value,
@@ -1035,16 +1069,15 @@
                 wishesMixte: document.getElementById('new-player-wishes-mixte').checked,
             };
             
-            // MODIFIÉ : Validation de "level"
             if (!newPlayer.firstName || !newPlayer.lastName || !newPlayer.license || !newPlayer.club || !newPlayer.registrationDate || !newPlayer.level) {
                 console.error("Données incomplètes pour ajouter un joueur.");
                 return;
             }
             
             allPlayers.push(newPlayer);
-            renderPlayers(); // Rafraîchir la liste
+            renderPlayers(); 
             
-            event.target.reset(); // Réinitialiser le formulaire
+            event.target.reset(); 
             hideModal('addPlayer');
         }
         
@@ -1055,7 +1088,7 @@
             document.getElementById('edit-player-id').value = player.id;
             document.getElementById('edit-player-lastname').value = player.lastName;
             document.getElementById('edit-player-firstname').value = player.firstName;
-            document.getElementById('edit-player-level').value = player.level; // AJOUTÉ
+            document.getElementById('edit-player-level').value = player.level; 
             document.getElementById('edit-player-regdate').value = player.registrationDate;
             document.getElementById('edit-player-license').value = player.license;
             document.getElementById('edit-player-club').value = player.club;
@@ -1077,12 +1110,11 @@
                 return;
             }
             
-            // MODIFIÉ : Ajout de "level"
             allPlayers[playerIndex] = {
                 id: playerId,
                 lastName: document.getElementById('edit-player-lastname').value,
                 firstName: document.getElementById('edit-player-firstname').value,
-                level: document.getElementById('edit-player-level').value, // AJOUTÉ
+                level: document.getElementById('edit-player-level').value, 
                 registrationDate: document.getElementById('edit-player-regdate').value,
                 license: document.getElementById('edit-player-license').value,
                 club: document.getElementById('edit-player-club').value,
@@ -1094,7 +1126,7 @@
             renderPlayers();
             
             if (activeView === 'tournament-detail') {
-                renderTournamentDetail(); // Rafraîchir si les noms ont changé
+                renderTournamentDetail(); 
             }
             
             event.target.reset();
@@ -1102,14 +1134,12 @@
         }
 
         function handleDeletePlayer(playerId) {
-            // 1. Retirer de la liste principale
             allPlayers = allPlayers.filter(p => p.id !== playerId);
             
-            // 2. Retirer ce joueur de tous les tournois (Simple et Paires)
             allTournaments.forEach(tournament => {
                 tournament.participants = tournament.participants.filter(p => {
-                    if (p.playerId) return p.playerId !== playerId; // Simple
-                    if (p.player1Id) return p.player1Id !== playerId && p.player2Id !== playerId; // Paire
+                    if (p.playerId) return p.playerId !== playerId; 
+                    if (p.player1Id) return p.player1Id !== playerId && p.player2Id !== playerId; 
                     return true;
                 });
             });
@@ -1119,8 +1149,8 @@
             if (activeView === 'tournament-detail') {
                 renderTournamentDetail();
             }
-            renderTournamentsList(); // Mettre à jour les compteurs
-            renderSidebarTournaments(); // Mettre à jour la sidebar
+            renderTournamentsList(); 
+            renderSidebarTournaments(); 
         }
 
         // --- Actions (Tournois) ---
@@ -1135,7 +1165,7 @@
                 id: crypto.randomUUID(),
                 name,
                 type,
-                participants: [] // Structure: { participantId, ... }
+                participants: [] 
             };
             allTournaments.push(newTournament);
             allTournaments.sort((a, b) => a.name.localeCompare(b.name));
@@ -1168,7 +1198,6 @@
             }
         }
 
-        // Gère l'ajout de joueurs SIMPLES (via cases à cocher)
         function handleAddParticipantSimple(event) {
             event.preventDefault();
             if (!currentTournament) return;
@@ -1185,13 +1214,11 @@
             });
             
             renderTournamentDetail();
-            renderTournamentsList(); // Mettre à jour les compteurs
+            renderTournamentsList(); 
             
-            // On ne ferme pas la modale, on rafraîchit juste la liste
             populateParticipantDropdowns();
         }
         
-        // Gère l'ajout d'une PAIRE (et garde la modale ouverte)
         function handleAddParticipantPair(event) {
             event.preventDefault();
             const player1Id = pairPlayer1Select.value;
@@ -1210,20 +1237,13 @@
             renderTournamentDetail();
             renderTournamentsList();
             
-            // Réinitialiser le formulaire pour ajout suivant
             event.target.reset();
-            
-            // Mettre à jour les listes déroulantes
             populateParticipantDropdowns();
             
-            // Afficher un succès temporaire
             pairAddedSuccess.classList.remove('hidden');
             setTimeout(() => {
                 pairAddedSuccess.classList.add('hidden');
             }, 2000);
-            
-            // Ne pas fermer la modale
-            // hideModal('addParticipantPair');
         }
 
         function handleRemoveParticipant(participantIdToRemove) {
