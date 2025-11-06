@@ -54,9 +54,12 @@
 
     <div class="flex h-screen bg-gray-100">
         <nav class="w-64 bg-gray-900 text-white flex flex-col flex-shrink-0">
-            <div class="p-4 border-b border-gray-700">
-                <h2 class="text-xl font-bold">Mon Bad sur loire</h2>
-                <span class="text-sm text-gray-400">Tournoi 2025-26</span>
+            <div class="border-b border-gray-700">
+                <img src="logo.png" alt="Logo Mon Bad sur loir" class="w-full h-auto p-4">
+                
+                <div class="p-4 pt-0 text-center">
+                    <h2 class="text-xl font-bold">Mon Bad sur loir</h2>
+                </div>
             </div>
             
             <div class="flex-1 p-4 space-y-2">
@@ -129,6 +132,9 @@
                             <option value="alpha-asc">Alphabétique (A-Z)</option>
                             <option value="date-desc">Date d'inscription (Plus récents)</option>
                             <option value="date-asc">Date d'inscription (Plus anciens)</option>
+                            <option value="level-simple-desc">Niveau Simple (Meilleur d'abord)</option>
+                            <option value="level-double-desc">Niveau Double (Meilleur d'abord)</option>
+                            <option value="level-mixte-desc">Niveau Mixte (Meilleur d'abord)</option>
                         </select>
                     </div>
                 </div>
@@ -163,6 +169,17 @@
                         + Nouveau Tableau
                     </button>
                 </div>
+                
+                <div class="mb-4 p-4 bg-white rounded-lg shadow flex flex-wrap gap-4 items-center">
+                    <div class="flex-shrink-0 min-w-[200px]">
+                        <label for="sort-tournaments-select" class="block text-sm font-medium text-gray-700 mb-1">Trier par</label>
+                        <select id="sort-tournaments-select"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                            <option value="alpha-asc">Alphabétique (A-Z)</option>
+                            <option value="participants-desc">Nb. Participants (Décroissant)</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                     <table class="w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
@@ -191,6 +208,18 @@
                         + Ajouter un Participant
                     </button>
                 </div>
+                
+                <div class="mb-4 p-4 bg-white rounded-lg shadow flex flex-wrap gap-4 items-center">
+                    <div class="flex-shrink-0 min-w-[200px]">
+                        <label for="sort-participants-select" class="block text-sm font-medium text-gray-700 mb-1">Trier par</label>
+                        <select id="sort-participants-select"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                            <option value="alpha-asc">Alphabétique (A-Z)</option>
+                            <option value="level-desc">Niveau (Meilleur d'abord)</option>
+                            <option value="date-desc">Date d'inscription (Plus récents)</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                     <table class="w-full"> <thead class="bg-gray-50">
                             <tr>
@@ -213,10 +242,10 @@
     </div>
 
     <div id="modal-add-player" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-        <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+        <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-2xl">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Ajouter un nouveau joueur</h3>
             <form id="form-add-player">
-                <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-x-6 gap-y-5">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
                         <input type="text" id="new-player-lastname" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
@@ -227,18 +256,35 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau</label>
-                        <select id="new-player-level" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                            <option value="nc">NC</option>
-                            <option value="p12">P12</option>
-                            <option value="p11">P11</option>
-                            <option value="p10">P10</option>
-                            <option value="d9">D9</option>
-                            <option value="d8">D8</option>
-                            <option value="d7">D7</option>
-                            <option value="r6">R6</option>
-                            <option value="r5">R5</option>
-                            <option value="r4">R4</option>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Genre</label>
+                        <div class="flex items-center space-x-4 pt-1">
+                            <label class="flex items-center text-sm text-gray-700">
+                                <input type="radio" id="new-player-gender-m" name="new-player-gender" value="m" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-2" required>
+                                Masculin
+                            </label>
+                            <label class="flex items-center text-sm text-gray-700">
+                                <input type="radio" id="new-player-gender-f" name="new-player-gender" value="f" class="h-4 w-4 text-pink-600 border-gray-300 focus:ring-pink-500 mr-2">
+                                Féminin
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau (Simple)</label>
+                        <select id="new-player-level-simple" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="nc">NC</option><option value="p12">P12</option><option value="p11">P11</option><option value="p10">P10</option><option value="d9">D9</option><option value="d8">D8</option><option value="d7">D7</option><option value="r6">R6</option><option value="r5">R5</option><option value="r4">R4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau (Double)</label>
+                        <select id="new-player-level-double" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="nc">NC</option><option value="p12">P12</option><option value="p11">P11</option><option value="p10">P10</option><option value="d9">D9</option><option value="d8">D8</option><option value="d7">D7</option><option value="r6">R6</option><option value="r5">R5</option><option value="r4">R4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau (Mixte)</label>
+                        <select id="new-player-level-mixte" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="nc">NC</option><option value="p12">P12</option><option value="p11">P11</option><option value="p10">P10</option><option value="d9">D9</option><option value="d8">D8</option><option value="d7">D7</option><option value="r6">R6</option><option value="r5">R5</option><option value="r4">R4</option>
                         </select>
                     </div>
                     
@@ -307,7 +353,7 @@
     </div>
 
     <div id="modal-add-participant-simple" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-        <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+        <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Ajouter des participants (Simple)</h3>
             <p class="text-sm text-gray-600 mb-4">
                 Cochez les joueurs à ajouter à <strong id="modal-participant-simple-tournament-name"></strong>.
@@ -362,12 +408,12 @@
 
 
     <div id="modal-edit-player" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-        <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+        <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-2xl">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Modifier le joueur</h3>
             <form id="form-edit-player">
                 <input type="hidden" id="edit-player-id">
                 
-                <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-x-6 gap-y-5">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
                         <input type="text" id="edit-player-lastname" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
@@ -378,18 +424,35 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau</label>
-                        <select id="edit-player-level" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                            <option value="nc">NC</option>
-                            <option value="p12">P12</option>
-                            <option value="p11">P11</option>
-                            <option value="p10">P10</option>
-                            <option value="d9">D9</option>
-                            <option value="d8">D8</option>
-                            <option value="d7">D7</option>
-                            <option value="r6">R6</option>
-                            <option value="r5">R5</option>
-                            <option value="r4">R4</option>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Genre</label>
+                        <div class="flex items-center space-x-4 pt-1">
+                            <label class="flex items-center text-sm text-gray-700">
+                                <input type="radio" id="edit-player-gender-m" name="edit-player-gender" value="m" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-2" required>
+                                Masculin
+                            </label>
+                            <label class="flex items-center text-sm text-gray-700">
+                                <input type="radio" id="edit-player-gender-f" name="edit-player-gender" value="f" class="h-4 w-4 text-pink-600 border-gray-300 focus:ring-pink-500 mr-2">
+                                Féminin
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau (Simple)</label>
+                        <select id="edit-player-level-simple" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="nc">NC</option><option value="p12">P12</option><option value="p11">P11</option><option value="p10">P10</option><option value="d9">D9</option><option value="d8">D8</option><option value="d7">D7</option><option value="r6">R6</option><option value="r5">R5</option><option value="r4">R4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau (Double)</label>
+                        <select id="edit-player-level-double" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="nc">NC</option><option value="p12">P12</option><option value="p11">P11</option><option value="p10">P10</option><option value="d9">D9</option><option value="d8">D8</option><option value="d7">D7</option><option value="r6">R6</option><option value="r5">R5</option><option value="r4">R4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Niveau (Mixte)</label>
+                        <select id="edit-player-level-mixte" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="nc">NC</option><option value="p12">P12</option><option value="p11">P11</option><option value="p10">P10</option><option value="d9">D9</option><option value="d8">D8</option><option value="d7">D7</option><option value="r6">R6</option><option value="r5">R5</option><option value="r4">R4</option>
                         </select>
                     </div>
                     
@@ -435,26 +498,26 @@
     <script type="module">
         // --- Données d'exemple (notre "base de données" locale) ---
         const SAMPLE_PLAYERS = [
-          { lastName: "Martin", firstName: "Vincent", level: "r6", license: "07367979", club: "CEST37", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: true, wishesMixte: true },
-          { lastName: "Loiseau", firstName: "Christophe", level: "d8", license: "07498393", club: "BCE72", registrationDate: "2025-10-02", wishesSimple: false, wishesDouble: true, wishesMixte: false },
-          { lastName: "Ravary", firstName: "Corentin", level: "r5", license: "07646991", club: "ASPC49", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: false, wishesMixte: false },
-          { lastName: "Taugourdeau", firstName: "Gwénaelle", level: "d7", license: "06746314", club: "ONEA49", registrationDate: "2025-10-03", wishesSimple: true, wishesDouble: true, wishesMixte: true },
-          { lastName: "Charron", firstName: "Alexandre", level: "r6", license: "06499200", club: "ASCEMMA72", registrationDate: "2025-10-02", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Molle", firstName: "Guillaume", level: "d9", license: "07516153", club: "ASCEMMA72", registrationDate: "2025-10-04", wishesSimple: false, wishesDouble: true, wishesMixte: false },
-          { lastName: "Fontenay", firstName: "Maxime", level: "p10", license: "07390128", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: false, wishesMixte: false },
-          { lastName: "Mellet", firstName: "Elie", level: "p11", license: "06972886", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: true, wishesMixte: true },
-          { lastName: "Chaintron", firstName: "Mylène", level: "d8", license: "06639623", club: "TBSMC72", registrationDate: "2025-10-03", wishesSimple: false, wishesDouble: true, wishesMixte: true },
-          { lastName: "Vetu", firstName: "Marine", level: "p10", license: "07519726", club: "JSC72", registrationDate: "2025-10-06", wishesSimple: true, wishesDouble: true, wishesMixte: true },
-          { lastName: "Herillard", firstName: "Fabien", level: "r4", license: "00436837", club: "JSC72", registrationDate: "2025-10-07", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Barge", firstName: "Antony", level: "d7", license: "06522803", club: "IMBC92", registrationDate: "2025-10-07", wishesSimple: false, wishesDouble: true, wishesMixte: false },
-          { lastName: "Rosaenz", firstName: "Camille", level: "p12", license: "07562582", club: "JSC72", registrationDate: "2025-10-08", wishesSimple: true, wishesDouble: true, wishesMixte: true },
-          { lastName: "Bordeau", firstName: "Quentin", level: "r5", license: "06759420", club: "LPL53", registrationDate: "2025-10-09", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Bechec", firstName: "Malou", level: "nc", license: "07574178", club: "SCB49", registrationDate: "2025-10-10", wishesSimple: false, wishesDouble: true, wishesMixte: true },
-          { lastName: "Dubois", firstName: "Alice", level: "p10", license: "07111111", club: "BCT37", registrationDate: "2025-10-11", wishesSimple: false, wishesDouble: true, wishesMixte: true },
-          { lastName: "Petit", firstName: "Julien", level: "r4", license: "07222222", club: "ASPC49", registrationDate: "2025-10-11", wishesSimple: true, wishesDouble: true, wishesMixte: false },
-          { lastName: "Bernard", firstName: "Sophie", level: "d8", license: "07333333", club: "BCE72", registrationDate: "2025-10-12", wishesSimple: false, wishesDouble: false, wishesMixte: true },
-          { lastName: "Moreau", firstName: "David", level: "nc", license: "07444444", club: "ONEA49", registrationDate: "2025-10-12", wishesSimple: true, wishesDouble: false, wishesMixte: false },
-          { lastName: "Dupont", firstName: "Lea", level: "p11", license: "07555555", club: "JSC72", registrationDate: "2025-10-13", wishesSimple: false, wishesDouble: true, wishesMixte: false }
+          { lastName: "Martin", firstName: "Vincent", levelSimple: "r6", levelDouble: "r6", levelMixte: "r6", license: "07367979", club: "CEST37", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "m" },
+          { lastName: "Loiseau", firstName: "Christophe", levelSimple: "d8", levelDouble: "d8", levelMixte: "d8", license: "07498393", club: "BCE72", registrationDate: "2025-10-02", wishesSimple: false, wishesDouble: true, wishesMixte: false, gender: "m" },
+          { lastName: "Ravary", firstName: "Corentin", levelSimple: "r5", levelDouble: "r5", levelMixte: "r5", license: "07646991", club: "ASPC49", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: false, wishesMixte: false, gender: "m" },
+          { lastName: "Taugourdeau", firstName: "Gwénaelle", levelSimple: "d7", levelDouble: "d7", levelMixte: "d7", license: "06746314", club: "ONEA49", registrationDate: "2025-10-03", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "f" },
+          { lastName: "Charron", firstName: "Alexandre", levelSimple: "r6", levelDouble: "r6", levelMixte: "r6", license: "06499200", club: "ASCEMMA72", registrationDate: "2025-10-02", wishesSimple: true, wishesDouble: true, wishesMixte: false, gender: "m" },
+          { lastName: "Molle", firstName: "Guillaume", levelSimple: "d9", levelDouble: "d9", levelMixte: "d9", license: "07516153", club: "ASCEMMA72", registrationDate: "2025-10-04", wishesSimple: false, wishesDouble: true, wishesMixte: false, gender: "m" },
+          { lastName: "Fontenay", firstName: "Maxime", levelSimple: "p10", levelDouble: "p10", levelMixte: "p10", license: "07390128", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: false, wishesMixte: false, gender: "m" },
+          { lastName: "Mellet", firstName: "Elie", levelSimple: "p11", levelDouble: "p11", levelMixte: "p11", license: "06972886", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "m" },
+          { lastName: "Chaintron", firstName: "Mylène", levelSimple: "d8", levelDouble: "d8", levelMixte: "d8", license: "06639623", club: "TBSMC72", registrationDate: "2025-10-03", wishesSimple: false, wishesDouble: true, wishesMixte: true, gender: "f" },
+          { lastName: "Vetu", firstName: "Marine", levelSimple: "p10", levelDouble: "p10", levelMixte: "p10", license: "07519726", club: "JSC72", registrationDate: "2025-10-06", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "f" },
+          { lastName: "Herillard", firstName: "Fabien", levelSimple: "r4", levelDouble: "r4", levelMixte: "r4", license: "00436837", club: "JSC72", registrationDate: "2025-10-07", wishesSimple: true, wishesDouble: true, wishesMixte: false, gender: "m" },
+          { lastName: "Barge", firstName: "Antony", levelSimple: "d7", levelDouble: "d7", levelMixte: "d7", license: "06522803", club: "IMBC92", registrationDate: "2025-10-07", wishesSimple: false, wishesDouble: true, wishesMixte: false, gender: "m" },
+          { lastName: "Rosaenz", firstName: "Camille", levelSimple: "p12", levelDouble: "p12", levelMixte: "p12", license: "07562582", club: "JSC72", registrationDate: "2025-10-08", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "f" },
+          { lastName: "Bordeau", firstName: "Quentin", levelSimple: "r5", levelDouble: "r5", levelMixte: "r5", license: "06759420", club: "LPL53", registrationDate: "2025-10-09", wishesSimple: true, wishesDouble: true, wishesMixte: false, gender: "m" },
+          { lastName: "Bechec", firstName: "Malou", levelSimple: "nc", levelDouble: "nc", levelMixte: "nc", license: "07574178", club: "SCB49", registrationDate: "2025-10-10", wishesSimple: false, wishesDouble: true, wishesMixte: true, gender: "f" },
+          { lastName: "Dubois", firstName: "Alice", levelSimple: "p10", levelDouble: "p10", levelMixte: "p10", license: "07111111", club: "BCT37", registrationDate: "2025-10-11", wishesSimple: false, wishesDouble: true, wishesMixte: true, gender: "f" },
+          { lastName: "Petit", firstName: "Julien", levelSimple: "r4", levelDouble: "r4", levelMixte: "r4", license: "07222222", club: "ASPC49", registrationDate: "2025-10-11", wishesSimple: true, wishesDouble: true, wishesMixte: false, gender: "m" },
+          { lastName: "Bernard", firstName: "Sophie", levelSimple: "d8", levelDouble: "d8", levelMixte: "d8", license: "07333333", club: "BCE72", registrationDate: "2025-10-12", wishesSimple: false, wishesDouble: false, wishesMixte: true, gender: "f" },
+          { lastName: "Moreau", firstName: "David", levelSimple: "nc", levelDouble: "nc", levelMixte: "nc", license: "07444444", club: "ONEA49", registrationDate: "2025-10-12", wishesSimple: true, wishesDouble: false, wishesMixte: false, gender: "m" },
+          { lastName: "Dupont", firstName: "Lea", levelSimple: "p11", levelDouble: "p11", levelMixte: "p11", license: "07555555", club: "JSC72", registrationDate: "2025-10-13", wishesSimple: false, wishesDouble: true, wishesMixte: false, gender: "f" }
         ];
 
         // --- État de l'application ---
@@ -463,6 +526,8 @@
         let currentTournament = null;
         let currentSortMode = 'alpha-asc';
         let currentSearchTerm = '';
+        let currentSortModeTournaments = 'alpha-asc';
+        let currentSortModeParticipants = 'alpha-asc';
         // MODIFIÉ ICI : Ajout de l'état du filtre des souhaits
         let currentWishFilters = {
             simple: false,
@@ -609,6 +674,17 @@
             return allPlayers.find(p => p.id === playerId);
         }
 
+        // Helper pour convertir le niveau string en valeur numérique pour le tri
+        const levelSortMap = {
+            'r4': 10, 'r5': 9, 'r6': 8,
+            'd7': 7, 'd8': 6, 'd9': 5,
+            'p10': 4, 'p11': 3, 'p12': 2,
+            'nc': 1
+        };
+        function getLevelValue(levelString) {
+            return levelSortMap[levelString ? levelString.toLowerCase() : 'nc'] || 0;
+        }
+
         // MODIFIÉ ICI : Ajout du filtrage par Souhaits
         function renderPlayers() {
             // 1. Filtrer par Recherche
@@ -653,6 +729,16 @@
                 case 'date-asc':
                     sortedPlayers.sort((a, b) => new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime());
                     break;
+                // --- NOUVEAUX CAS DE TRI ---
+                case 'level-simple-desc':
+                    sortedPlayers.sort((a, b) => getLevelValue(b.levelSimple) - getLevelValue(a.levelSimple));
+                    break;
+                case 'level-double-desc':
+                    sortedPlayers.sort((a, b) => getLevelValue(b.levelDouble) - getLevelValue(a.levelDouble));
+                    break;
+                case 'level-mixte-desc':
+                    sortedPlayers.sort((a, b) => getLevelValue(b.levelMixte) - getLevelValue(a.levelMixte));
+                    break;
             }
 
             if (sortedPlayers.length === 0 && !isLoadingPlayers) {
@@ -669,11 +755,21 @@
                  return;
             }
 
-            playersTableBody.innerHTML = sortedPlayers.map(player => `
+            playersTableBody.innerHTML = sortedPlayers.map(player => {
+                // DÉFINIT LA CLASSE DE COULEUR
+                const genderClass = player.gender === 'f' ? 'text-pink-700' : (player.gender === 'm' ? 'text-blue-700' : 'text-gray-900');
+                
+                // FORMATER LES NIVEAUX
+                const levelSimple = (player.levelSimple || '??').toUpperCase();
+                const levelDouble = (player.levelDouble || '??').toUpperCase();
+                const levelMixte = (player.levelMixte || '??').toUpperCase();
+                const levelsText = `S:${levelSimple} / D:${levelDouble} / M:${levelMixte}`;
+
+                return `
                 <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.lastName}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.firstName}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.level.toUpperCase()}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${genderClass}">${player.lastName}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${genderClass}">${player.firstName}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${levelsText}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${formatDate(player.registrationDate)}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.license}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.club}</td>
@@ -683,15 +779,28 @@
                         <button data-id="${player.id}" class="btn-delete-player text-red-600 hover:text-red-900">Supprimer</button>
                     </td>
                 </tr>
-            `).join('');
+            `}).join('');
         }
 
         function renderTournamentsList() {
-            if (allTournaments.length === 0) {
+            
+            // --- AJOUT DU TRI ---
+            const sortedTournaments = [...allTournaments];
+            switch (currentSortModeTournaments) {
+                case 'alpha-asc':
+                    sortedTournaments.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'participants-desc':
+                    sortedTournaments.sort((a, b) => b.participants.length - a.participants.length);
+                    break;
+            }
+            // --- FIN DU TRI ---
+            
+            if (sortedTournaments.length === 0) {
                 tournamentsTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-12 text-center text-gray-500">Aucun tableau créé.</td></tr>`;
                 return;
             }
-            tournamentsTableBody.innerHTML = allTournaments.map(t => {
+            tournamentsTableBody.innerHTML = sortedTournaments.map(t => {
                 // Compte les participants uniques (gère simples et paires)
                 const participantCount = t.participants.length; 
                 
@@ -739,32 +848,79 @@
                 
                 if (currentTournament.type === 'simple') {
                     // --- Affichage Simple ---
-                    const players = participants
+                    let players = participants
                         .map(p => getPlayerById(p.playerId))
-                        .filter(Boolean) // Filtrer les joueurs supprimés
-                        .sort((a,b) => a.lastName.localeCompare(b.lastName));
-                        
-                    participantsTableBody.innerHTML = players.map(player => `
+                        .filter(Boolean); // Filtrer les joueurs supprimés
+                    
+                    // --- AJOUT DU TRI POUR 'SIMPLE' ---
+                    switch (currentSortModeParticipants) {
+                        case 'alpha-asc':
+                            players.sort((a, b) => {
+                                const lastNameComparison = a.lastName.localeCompare(b.lastName);
+                                if (lastNameComparison !== 0) return lastNameComparison;
+                                return a.firstName.localeCompare(b.firstName);
+                            });
+                            break;
+                        case 'date-desc':
+                            players.sort((a, b) => new Date(b.registrationDate).getTime() - new Date(a.registrationDate).getTime());
+                            break;
+                        case 'level-desc':
+                            players.sort((a, b) => getLevelValue(b.levelSimple) - getLevelValue(a.levelSimple));
+                            break;
+                    }
+                    
+                    participantsTableBody.innerHTML = players.map(player => {
+                        // AJOUT DE LA CLASSE DE COULEUR
+                        const genderClass = player.gender === 'f' ? 'text-pink-700' : (player.gender === 'm' ? 'text-blue-700' : 'text-gray-900');
+                        // NIVEAU PERTINENT
+                        const level = (player.levelSimple || '??').toUpperCase();
+
+                        return `
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 w-5"></td> <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.lastName}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player.firstName}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.level.toUpperCase()}</td>
+                            <td class="px-6 py-4 w-5"></td> <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${genderClass}">${player.lastName}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${genderClass}">${player.firstName}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${level}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.license}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player.club}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                                 <button data-participant-id="${participants.find(p => p.playerId === player.id).participantId}" class="btn-remove-participant text-red-600 hover:text-red-900">Retirer</button>
                             </td>
                         </tr>
-                    `).join('');
+                    `}).join('');
                 
                 } else {
                     // --- Affichage Double / Mixte ---
-                    participants.sort((a, b) => { // Trier par nom du joueur 1
-                        const p1a = getPlayerById(a.player1Id);
-                        const p1b = getPlayerById(b.player1Id);
-                        if (!p1a || !p1b) return 0;
-                        return p1a.lastName.localeCompare(p1b.lastName);
-                    });
+                    const levelKey = currentTournament.type === 'double' ? 'levelDouble' : 'levelMixte';
+
+                    // --- AJOUT DU TRI POUR 'PAIRES' (basé sur joueur 1) ---
+                    switch (currentSortModeParticipants) {
+                        case 'alpha-asc':
+                            participants.sort((a, b) => { 
+                                const p1a = getPlayerById(a.player1Id);
+                                const p1b = getPlayerById(b.player1Id);
+                                if (!p1a || !p1b) return 0;
+                                const lastNameComparison = p1a.lastName.localeCompare(p1b.lastName);
+                                if (lastNameComparison !== 0) return lastNameComparison;
+                                return p1a.firstName.localeCompare(p1b.firstName);
+                            });
+                            break;
+                        case 'date-desc':
+                             participants.sort((a, b) => { 
+                                const p1a = getPlayerById(a.player1Id);
+                                const p1b = getPlayerById(b.player1Id);
+                                if (!p1a || !p1b) return 0;
+                                return new Date(p1b.registrationDate).getTime() - new Date(p1a.registrationDate).getTime();
+                            });
+                            break;
+                        case 'level-desc':
+                            participants.sort((a, b) => { 
+                                const p1a = getPlayerById(a.player1Id);
+                                const p1b = getPlayerById(b.player1Id);
+                                if (!p1a || !p1b) return 0;
+                                return getLevelValue(p1b[levelKey]) - getLevelValue(p1a[levelKey]);
+                            });
+                            break;
+                    }
                     
                     participants.forEach(pair => {
                         const player1 = getPlayerById(pair.player1Id);
@@ -773,6 +929,14 @@
                         // Si un des joueurs a été supprimé, ne pas afficher la paire
                         if (!player1 || !player2) return; 
                         
+                        // AJOUT DES CLASSES DE COULEUR P1 ET P2
+                        const p1GenderClass = player1.gender === 'f' ? 'text-pink-700' : (player1.gender === 'm' ? 'text-blue-700' : 'text-gray-900');
+                        const p2GenderClass = player2.gender === 'f' ? 'text-pink-700' : (player2.gender === 'm' ? 'text-blue-700' : 'text-gray-900');
+                        
+                        // NIVEAUX PERTINENTS
+                        const p1Level = (currentTournament.type === 'double' ? player1.levelDouble : player1.levelMixte) || '??';
+                        const p2Level = (currentTournament.type === 'double' ? player2.levelDouble : player2.levelMixte) || '??';
+
                         // Ligne Joueur 1
                         participantsTableBody.innerHTML += `
                             <tr class="pair-row hover:bg-gray-50">
@@ -781,9 +945,9 @@
                                       <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.006.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 1 1 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.49 5.49 0 0 0 4 13H1s1 0 1-1-1-4-4-4 3.002 4 3.92 4zM4 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4m-2 2a3 3 0 1 1 6 0 3 3 0 0 1-6 0"/>
                                     </svg>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player1.lastName}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player1.firstName}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player1.level.toUpperCase()}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${p1GenderClass}">${player1.lastName}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${p1GenderClass}">${player1.firstName}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${p1Level.toUpperCase()}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player1.license}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player1.club}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2" rowspan="2">
@@ -794,9 +958,9 @@
                         // Ligne Joueur 2
                         participantsTableBody.innerHTML += `
                             <tr class="pair-row hover:bg-gray-50">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player2.lastName}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${player2.firstName}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player2.level.toUpperCase()}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${p2GenderClass}">${player2.lastName}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${p2GenderClass}">${player2.firstName}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${p2Level.toUpperCase()}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player2.license}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${player2.club}</td>
                             </tr>
@@ -868,12 +1032,14 @@
                     participantCheckboxList.innerHTML = `<p class="text-sm text-gray-500 p-4 text-center">Aucun joueur disponible (vérifiez les inscrits ou leurs 'souhaits').</p>`;
                     addParticipantSimpleSubmitBtn.disabled = true;
                 } else {
-                    participantCheckboxList.innerHTML = availablePlayers.map(p => `
+                    participantCheckboxList.innerHTML = availablePlayers.map(p => {
+                        const level = (p.levelSimple || '??').toUpperCase();
+                        return `
                         <label class="flex items-center text-sm text-gray-700 p-2 rounded hover:bg-gray-100">
                             <input type="checkbox" data-id="${p.id}" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-3">
-                            ${p.lastName} ${p.firstName} <span class="text-gray-500 ml-2">(${p.level.toUpperCase()} / ${p.club})</span>
+                            ${p.lastName} ${p.firstName} <span class="text-gray-500 ml-2">(${level} / ${p.club})</span>
                         </label>
-                    `).join('');
+                    `}).join('');
                     addParticipantSimpleSubmitBtn.disabled = false;
                 }
                 document.getElementById('modal-participant-simple-tournament-name').textContent = currentTournament.name;
@@ -881,7 +1047,10 @@
             } else {
                 // Modale Paire (Dropdowns)
                 const optionsHtml = availablePlayers
-                    .map(p => `<option value="${p.id}">${p.lastName} ${p.firstName} (${p.level.toUpperCase()} / ${p.club})</option>`).join('');
+                    .map(p => {
+                        const level = (currentTournament.type === 'double' ? p.levelDouble : p.levelMixte) || '??';
+                        return `<option value="${p.id}">${p.lastName} ${p.firstName} (${level.toUpperCase()} / ${p.club})</option>`
+                    }).join('');
                     
                 pairPlayer1Select.innerHTML = `<option value="" disabled selected>Sélectionner le joueur 1...</option>` + optionsHtml;
                 pairPlayer2Select.innerHTML = `<option value="" disabled selected>Sélectionre le joueur 2...</option>` + optionsHtml;
@@ -925,6 +1094,16 @@
 
         // --- Gestionnaires d'événements ---
         function setupEventListeners() {
+            // NOUVEAUX LISTENERS DE TRI
+            document.getElementById('sort-tournaments-select').addEventListener('change', (e) => {
+                currentSortModeTournaments = e.target.value;
+                renderTournamentsList();
+            });
+            document.getElementById('sort-participants-select').addEventListener('change', (e) => {
+                currentSortModeParticipants = e.target.value;
+                renderTournamentDetail();
+            });
+
             // Navigation principale
             navButtons.players.addEventListener('click', () => {
                 currentTournament = null; 
@@ -1056,11 +1235,18 @@
         // --- Actions (Joueurs) ---
         function handleAddNewPlayer(event) {
             event.preventDefault();
+            
+            // LIRE LA VALEUR DU BOUTON RADIO
+            const gender = document.querySelector('input[name="new-player-gender"]:checked') ? document.querySelector('input[name="new-player-gender"]:checked').value : null;
+
             const newPlayer = {
                 id: crypto.randomUUID(),
                 lastName: document.getElementById('new-player-lastname').value,
                 firstName: document.getElementById('new-player-firstname').value,
-                level: document.getElementById('new-player-level').value, 
+                gender: gender, // AJOUTER LA PROPRIÉTÉ
+                levelSimple: document.getElementById('new-player-level-simple').value, 
+                levelDouble: document.getElementById('new-player-level-double').value, 
+                levelMixte: document.getElementById('new-player-level-mixte').value, 
                 registrationDate: document.getElementById('new-player-regdate').value,
                 license: document.getElementById('new-player-license').value,
                 club: document.getElementById('new-player-club').value,
@@ -1069,7 +1255,7 @@
                 wishesMixte: document.getElementById('new-player-wishes-mixte').checked,
             };
             
-            if (!newPlayer.firstName || !newPlayer.lastName || !newPlayer.license || !newPlayer.club || !newPlayer.registrationDate || !newPlayer.level) {
+            if (!newPlayer.firstName || !newPlayer.lastName || !newPlayer.license || !newPlayer.club || !newPlayer.registrationDate || !newPlayer.levelSimple || !newPlayer.levelDouble || !newPlayer.levelMixte) {
                 console.error("Données incomplètes pour ajouter un joueur.");
                 return;
             }
@@ -1088,7 +1274,14 @@
             document.getElementById('edit-player-id').value = player.id;
             document.getElementById('edit-player-lastname').value = player.lastName;
             document.getElementById('edit-player-firstname').value = player.firstName;
-            document.getElementById('edit-player-level').value = player.level; 
+            
+            // PRÉ-COCHER LE BON BOUTON RADIO
+            document.getElementById('edit-player-gender-m').checked = (player.gender === 'm');
+            document.getElementById('edit-player-gender-f').checked = (player.gender === 'f');
+
+            document.getElementById('edit-player-level-simple').value = player.levelSimple || 'nc'; 
+            document.getElementById('edit-player-level-double').value = player.levelDouble || 'nc'; 
+            document.getElementById('edit-player-level-mixte').value = player.levelMixte || 'nc'; 
             document.getElementById('edit-player-regdate').value = player.registrationDate;
             document.getElementById('edit-player-license').value = player.license;
             document.getElementById('edit-player-club').value = player.club;
@@ -1110,11 +1303,17 @@
                 return;
             }
             
+            // LIRE LA VALEUR DU BOUTON RADIO
+            const gender = document.querySelector('input[name="edit-player-gender"]:checked') ? document.querySelector('input[name="edit-player-gender"]:checked').value : null;
+
             allPlayers[playerIndex] = {
                 id: playerId,
                 lastName: document.getElementById('edit-player-lastname').value,
                 firstName: document.getElementById('edit-player-firstname').value,
-                level: document.getElementById('edit-player-level').value, 
+                gender: gender, // AJOUTER LA PROPRIÉTÉ
+                levelSimple: document.getElementById('edit-player-level-simple').value, 
+                levelDouble: document.getElementById('edit-player-level-double').value, 
+                levelMixte: document.getElementById('edit-player-level-mixte').value, 
                 registrationDate: document.getElementById('edit-player-regdate').value,
                 license: document.getElementById('edit-player-license').value,
                 club: document.getElementById('edit-player-club').value,
