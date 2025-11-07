@@ -34,16 +34,16 @@
         .pair-row + .pair-row {
             border-top: 1px dashed #e5e7eb; /* Ligne pointillée entre les partenaires */
         }
-        .pair-row .pair-indicator {
+        /* .pair-row .pair-indicator {
             visibility: hidden; /* Cache l'indicateur par défaut */
         }
         .pair-row:first-child .pair-indicator {
              visibility: visible; /* Affiche l'indicateur pour le premier joueur de la paire */
-        }
+        } */
         /* Style pour la modale simple (liste à cocher) */
         .participant-checkbox-list {
-            max-height: 300px;
-            overflow-y: auto;
+            /* max-height: 300px; */ /* <-- Supprimé */
+        /* overflow-y: auto; */ /* <-- Supprimé */
             border: 1px solid #e5e7eb;
             border-radius: 0.5rem;
             padding: 0.5rem;
@@ -52,9 +52,9 @@
 </head>
 <body class="bg-gray-100">
 
-    <div class="flex h-screen bg-gray-100">
-        <nav class="w-64 bg-gray-900 text-white flex flex-col flex-shrink-0">
-            <div class="border-b border-gray-700">
+    <div class="flex min-h-screen bg-gray-100">
+        <nav class="w-60 bg-[#27538A] text-white flex flex-col flex-shrink-0">
+            <div class="border-b border-[#3A6CB2]">
                 <img src="logo.png" alt="Logo Mon Bad sur loir" class="w-full h-auto p-4">
                 
                 <div class="p-4 pt-0 text-center">
@@ -64,23 +64,23 @@
             
             <div class="flex-1 p-4 space-y-2">
                 <button id="nav-players-btn"
-                    class="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-150 bg-blue-600">
+                    class="w-full text-left px-3 py-2 rounded-lg hover:bg-[#3A6CB2] transition-colors duration-150 bg-[#5C8957]">
                     Gérer les Joueurs
                 </button>
                 <button id="nav-tournaments-btn"
-                    class="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-150">
+                    class="w-full text-left px-3 py-2 rounded-lg hover:bg-[#3A6CB2] transition-colors duration-150">
                     Gérer les Tournois
                 </button>
 
-                <div class="pt-4 border-t border-gray-700">
-                    <h3 class="px-3 text-sm font-semibold text-gray-400 uppercase tracking-wider">Tableaux</h3>
+                <div class="pt-4 border-t border-[#3A6CB2]">
+                    <h3 class="px-3 text-sm font-semibold text-gray-200 uppercase tracking-wider">Tableaux</h3>
                     <div id="sidebar-tournaments-list" class="mt-2 space-y-1">
                         <p class="px-3 text-sm text-gray-500">Aucun tableau créé.</p>
                     </div>
                 </div>
             </div>
             
-            <div class="p-4 border-t border-gray-700">
+            <div class="p-4 border-t border-[#3A6CB2]">
                 <div id="auth-status-connected" class="">
                     <div class="text-xs text-green-400">Connecté (Local)</div>
                     <div id="auth-status-userid" class="text-xs text-gray-500 break-words">Mode Test</div>
@@ -91,13 +91,13 @@
             </div>
         </nav>
 
-        <main class="flex-1 p-8 overflow-y-auto">
+        <main class="flex-1 p-6">
             
             <div id="view-players" class="page-view max-w-6xl mx-auto">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-3xl font-bold text-gray-800">Gestion des Joueurs</h1>
                     <button id="show-add-player-modal-btn"
-                        class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform duration-150 active:scale-95">
+                        class="px-4 py-2 bg-[#5C8957] text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform duration-150 active:scale-95">
                         + Nouveau Joueur
                     </button>
                 </div>
@@ -165,7 +165,7 @@
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-3xl font-bold text-gray-800">Gestion des Tableaux (Tournois)</h1>
                     <button id="show-add-tournament-modal-btn"
-                        class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform duration-150 active:scale-95">
+                        class="px-4 py-2 bg-[#5C8957] text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform duration-150 active:scale-95">
                         + Nouveau Tableau
                     </button>
                 </div>
@@ -204,7 +204,7 @@
                         <p id="detail-tournament-type" class="text-lg text-gray-600 capitalize"></p>
                     </div>
                     <button id="show-add-participant-modal-btn"
-                        class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-transform duration-150 active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                        class="px-4 py-2 bg-[#5C8957] text-white rounded-lg shadow-md hover:bg-green-700 transition-transform duration-150 active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed">
                         + Ajouter un Participant
                     </button>
                 </div>
@@ -320,7 +320,7 @@
                     </div>
                 <div class="mt-8 flex justify-end space-x-3">
                     <button type="button" class="modal-cancel-btn px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Annuler</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Enregistrer</button>
+                    <button type="submit" class="px-4 py-2 bg-[#5C8957] text-white rounded-lg hover:bg-blue-700">Enregistrer</button>
                 </div>
             </form>
         </div>
@@ -330,7 +330,7 @@
         <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Créer un nouveau tableau</h3>
             <form id="form-add-tournament">
-                <div class="space-y-4">
+                <div class="space-y-4 flex-1 overflow-y-auto">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Nom du tableau</label>
                         <input type="text" id="new-tournament-name" placeholder="Ex: Simple Homme R" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
@@ -346,20 +346,38 @@
                 </div>
                 <div class="mt-8 flex justify-end space-x-3">
                     <button type="button" class="modal-cancel-btn px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Annuler</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Créer</button>
+                    <button type="submit" class="px-4 py-2 bg-[#5C8957] text-white rounded-lg hover:bg-blue-700">Créer</button>
                 </div>
             </form>
         </div>
     </div>
 
     <div id="modal-add-participant-simple" class="modal-overlay hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-        <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg">
+        <div class="modal-content bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg flex flex-col max-h-[90vh]">
             <h3 class="text-2xl font-bold mb-6 text-gray-800">Ajouter des participants (Simple)</h3>
             <p class="text-sm text-gray-600 mb-4">
                 Cochez les joueurs à ajouter à <strong id="modal-participant-simple-tournament-name"></strong>.
             </p>
-            <form id="form-add-participant-simple">
-                <div class="space-y-4">
+            <form id="form-add-participant-simple" class="flex flex-col flex-1 overflow-hidden">
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Filtrer par genre :</label>
+                    <div class="flex items-center space-x-4">
+                        <label class="flex items-center text-sm text-gray-700">
+                            <input type="radio" name="simple-participant-gender-filter" value="all" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-2" checked>
+                            Tous
+                        </label>
+                        <label class="flex items-center text-sm text-gray-700">
+                            <input type="radio" name="simple-participant-gender-filter" value="m" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-2">
+                            Masculin
+                        </label>
+                        <label class="flex items-center text-sm text-gray-700">
+                            <input type="radio" name="simple-participant-gender-filter" value="f" class="h-4 w-4 text-pink-600 border-gray-300 focus:ring-pink-500 mr-2">
+                            Féminin
+                        </label>
+                    </div>
+                </div>
+                <div class="space-y-4 flex-1 overflow-y-auto">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Joueurs disponibles</label>
                         <div id="participant-checkbox-list" class="participant-checkbox-list space-y-2">
@@ -369,7 +387,7 @@
                 </div>
                 <div class="mt-8 flex justify-end space-x-3">
                     <button type="button" class="modal-cancel-btn px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Fermer</button>
-                    <button type="submit" id="add-participant-simple-submit-btn" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400">Ajouter les sélectionnés</button>
+                    <button type="submit" id="add-participant-simple-submit-btn" class="px-4 py-2 bg-[#5C8957] text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400">Ajouter les sélectionnés</button>
                 </div>
             </form>
         </div>
@@ -382,7 +400,7 @@
                 Inscrivez les paires pour <strong id="modal-participant-pair-tournament-name"></strong>.
             </p>
             <form id="form-add-participant-pair">
-                <div class="space-y-4">
+                <div class="space-y-4 flex-1 overflow-y-auto">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Joueur 1</label>
                         <select id="select-pair-player1" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
@@ -400,7 +418,7 @@
                 </div>
                 <div class="mt-8 flex justify-between space-x-3">
                     <button type="button" class="modal-cancel-btn px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Fermer</Lbutton>
-                    <button type="submit" id="add-participant-pair-submit-btn" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400">Ajouter et Suivant</button>
+                    <button type="submit" id="add-participant-pair-submit-btn" class="px-4 py-2 bg-[#5C8957] text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400">Ajouter et Suivant</button>
                 </div>
             </form>
         </div>
@@ -497,28 +515,7 @@
 
     <script type="module">
         // --- Données d'exemple (notre "base de données" locale) ---
-        const SAMPLE_PLAYERS = [
-          { lastName: "Martin", firstName: "Vincent", levelSimple: "r6", levelDouble: "r6", levelMixte: "r6", license: "07367979", club: "CEST37", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "m" },
-          { lastName: "Loiseau", firstName: "Christophe", levelSimple: "d8", levelDouble: "d8", levelMixte: "d8", license: "07498393", club: "BCE72", registrationDate: "2025-10-02", wishesSimple: false, wishesDouble: true, wishesMixte: false, gender: "m" },
-          { lastName: "Ravary", firstName: "Corentin", levelSimple: "r5", levelDouble: "r5", levelMixte: "r5", license: "07646991", club: "ASPC49", registrationDate: "2025-10-01", wishesSimple: true, wishesDouble: false, wishesMixte: false, gender: "m" },
-          { lastName: "Taugourdeau", firstName: "Gwénaelle", levelSimple: "d7", levelDouble: "d7", levelMixte: "d7", license: "06746314", club: "ONEA49", registrationDate: "2025-10-03", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "f" },
-          { lastName: "Charron", firstName: "Alexandre", levelSimple: "r6", levelDouble: "r6", levelMixte: "r6", license: "06499200", club: "ASCEMMA72", registrationDate: "2025-10-02", wishesSimple: true, wishesDouble: true, wishesMixte: false, gender: "m" },
-          { lastName: "Molle", firstName: "Guillaume", levelSimple: "d9", levelDouble: "d9", levelMixte: "d9", license: "07516153", club: "ASCEMMA72", registrationDate: "2025-10-04", wishesSimple: false, wishesDouble: true, wishesMixte: false, gender: "m" },
-          { lastName: "Fontenay", firstName: "Maxime", levelSimple: "p10", levelDouble: "p10", levelMixte: "p10", license: "07390128", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: false, wishesMixte: false, gender: "m" },
-          { lastName: "Mellet", firstName: "Elie", levelSimple: "p11", levelDouble: "p11", levelMixte: "p11", license: "06972886", club: "CEST37", registrationDate: "2025-10-05", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "m" },
-          { lastName: "Chaintron", firstName: "Mylène", levelSimple: "d8", levelDouble: "d8", levelMixte: "d8", license: "06639623", club: "TBSMC72", registrationDate: "2025-10-03", wishesSimple: false, wishesDouble: true, wishesMixte: true, gender: "f" },
-          { lastName: "Vetu", firstName: "Marine", levelSimple: "p10", levelDouble: "p10", levelMixte: "p10", license: "07519726", club: "JSC72", registrationDate: "2025-10-06", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "f" },
-          { lastName: "Herillard", firstName: "Fabien", levelSimple: "r4", levelDouble: "r4", levelMixte: "r4", license: "00436837", club: "JSC72", registrationDate: "2025-10-07", wishesSimple: true, wishesDouble: true, wishesMixte: false, gender: "m" },
-          { lastName: "Barge", firstName: "Antony", levelSimple: "d7", levelDouble: "d7", levelMixte: "d7", license: "06522803", club: "IMBC92", registrationDate: "2025-10-07", wishesSimple: false, wishesDouble: true, wishesMixte: false, gender: "m" },
-          { lastName: "Rosaenz", firstName: "Camille", levelSimple: "p12", levelDouble: "p12", levelMixte: "p12", license: "07562582", club: "JSC72", registrationDate: "2025-10-08", wishesSimple: true, wishesDouble: true, wishesMixte: true, gender: "f" },
-          { lastName: "Bordeau", firstName: "Quentin", levelSimple: "r5", levelDouble: "r5", levelMixte: "r5", license: "06759420", club: "LPL53", registrationDate: "2025-10-09", wishesSimple: true, wishesDouble: true, wishesMixte: false, gender: "m" },
-          { lastName: "Bechec", firstName: "Malou", levelSimple: "nc", levelDouble: "nc", levelMixte: "nc", license: "07574178", club: "SCB49", registrationDate: "2025-10-10", wishesSimple: false, wishesDouble: true, wishesMixte: true, gender: "f" },
-          { lastName: "Dubois", firstName: "Alice", levelSimple: "p10", levelDouble: "p10", levelMixte: "p10", license: "07111111", club: "BCT37", registrationDate: "2025-10-11", wishesSimple: false, wishesDouble: true, wishesMixte: true, gender: "f" },
-          { lastName: "Petit", firstName: "Julien", levelSimple: "r4", levelDouble: "r4", levelMixte: "r4", license: "07222222", club: "ASPC49", registrationDate: "2025-10-11", wishesSimple: true, wishesDouble: true, wishesMixte: false, gender: "m" },
-          { lastName: "Bernard", firstName: "Sophie", levelSimple: "d8", levelDouble: "d8", levelMixte: "d8", license: "07333333", club: "BCE72", registrationDate: "2025-10-12", wishesSimple: false, wishesDouble: false, wishesMixte: true, gender: "f" },
-          { lastName: "Moreau", firstName: "David", levelSimple: "nc", levelDouble: "nc", levelMixte: "nc", license: "07444444", club: "ONEA49", registrationDate: "2025-10-12", wishesSimple: true, wishesDouble: false, wishesMixte: false, gender: "m" },
-          { lastName: "Dupont", firstName: "Lea", levelSimple: "p11", levelDouble: "p11", levelMixte: "p11", license: "07555555", club: "JSC72", registrationDate: "2025-10-13", wishesSimple: false, wishesDouble: true, wishesMixte: false, gender: "f" }
-        ];
+        const SAMPLE_PLAYERS = []; // Remplacé par le script generer_test.py
 
         // --- État de l'application ---
         let allPlayers = [];
@@ -593,57 +590,2123 @@
         }
 
         // --- Chargement des données (simulé) ---
+        
         function loadInitialData() {
             isLoadingPlayers = true;
             
-            // 1. Créer tous les joueurs avec des ID uniques
-            allPlayers = SAMPLE_PLAYERS.map(player => ({
-                ...player,
-                id: crypto.randomUUID() // Génère un ID unique
-            }));
+            // 1. Injecter les données générées par le script Python
+            allPlayers = [
+    {
+        "id": "ef73bcae-2cc9-4b47-95ae-7366d823d6fe",
+        "lastName": "Perrot",
+        "firstName": "Théo",
+        "gender": "m",
+        "levelSimple": "p11",
+        "levelDouble": "p10",
+        "levelMixte": "p11",
+        "license": "07461725",
+        "club": "BCR41",
+        "registrationDate": "2025-11-03",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "ef2f534d-c1ae-4412-8cb2-7beafb76156f",
+        "lastName": "Rousseau",
+        "firstName": "Delphine",
+        "gender": "f",
+        "levelSimple": "r5",
+        "levelDouble": "d7",
+        "levelMixte": "p10",
+        "license": "07111177",
+        "club": "LPL53",
+        "registrationDate": "2025-10-08",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "0b800560-73ab-405f-9d25-39a28dad3947",
+        "lastName": "Poirier",
+        "firstName": "Olivier",
+        "gender": "m",
+        "levelSimple": "p12",
+        "levelDouble": "r5",
+        "levelMixte": "r4",
+        "license": "07439360",
+        "club": "ASPC49",
+        "registrationDate": "2025-11-14",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "2340db19-982c-4ffb-8fd1-bccb9a643d64",
+        "lastName": "Brun",
+        "firstName": "Amélie",
+        "gender": "f",
+        "levelSimple": "d9",
+        "levelDouble": "d8",
+        "levelMixte": "d7",
+        "license": "07693214",
+        "club": "USL72",
+        "registrationDate": "2025-11-13",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "8bca173e-64a3-416c-9400-82a64201501c",
+        "lastName": "Lecomte",
+        "firstName": "Pierre",
+        "gender": "m",
+        "levelSimple": "p10",
+        "levelDouble": "nc",
+        "levelMixte": "r5",
+        "license": "07115870",
+        "club": "ABC44",
+        "registrationDate": "2025-10-18",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "fe8de0f7-ec8a-4a05-87e8-80ee602ef689",
+        "lastName": "Bouvier",
+        "firstName": "Quentin",
+        "gender": "m",
+        "levelSimple": "r6",
+        "levelDouble": "p10",
+        "levelMixte": "r6",
+        "license": "07881013",
+        "club": "JSC72",
+        "registrationDate": "2025-11-28",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": false
+    },
+    {
+        "id": "97c75fc3-c6ff-41c6-9ef2-3f32520da4ed",
+        "lastName": "Hubert",
+        "firstName": "Cyril",
+        "gender": "m",
+        "levelSimple": "r6",
+        "levelDouble": "p11",
+        "levelMixte": "p12",
+        "license": "07840851",
+        "club": "USL72",
+        "registrationDate": "2025-11-04",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "ab037c02-fea7-4f9f-88e9-63f07b589650",
+        "lastName": "Chauvin",
+        "firstName": "Lucie",
+        "gender": "f",
+        "levelSimple": "d8",
+        "levelDouble": "r4",
+        "levelMixte": "nc",
+        "license": "07367665",
+        "club": "BCR41",
+        "registrationDate": "2025-11-21",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "69b86d3b-cb6f-43b5-9d4e-93c855a8c369",
+        "lastName": "Morel",
+        "firstName": "Caroline",
+        "gender": "f",
+        "levelSimple": "d7",
+        "levelDouble": "d9",
+        "levelMixte": "nc",
+        "license": "07736964",
+        "club": "SCB49",
+        "registrationDate": "2025-10-13",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "8822e3ad-9ab2-4017-8954-bce23785fcaa",
+        "lastName": "Mercier",
+        "firstName": "Baptiste",
+        "gender": "m",
+        "levelSimple": "r5",
+        "levelDouble": "d8",
+        "levelMixte": "r5",
+        "license": "07422011",
+        "club": "JSC72",
+        "registrationDate": "2025-11-27",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "45e977c8-8477-4665-9024-9cef3e82d151",
+        "lastName": "Andre",
+        "firstName": "Valentin",
+        "gender": "m",
+        "levelSimple": "r6",
+        "levelDouble": "p12",
+        "levelMixte": "d9",
+        "license": "07928631",
+        "club": "LPL53",
+        "registrationDate": "2025-11-26",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "43d2dd25-e69e-4213-a39d-6c3b55010875",
+        "lastName": "Hamon",
+        "firstName": "Juliette",
+        "gender": "f",
+        "levelSimple": "p10",
+        "levelDouble": "r6",
+        "levelMixte": "r6",
+        "license": "07106506",
+        "club": "BCE72",
+        "registrationDate": "2025-10-12",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "0f3bca74-83cf-4690-983a-9b08223c05db",
+        "lastName": "Guyot",
+        "firstName": "Raphaël",
+        "gender": "m",
+        "levelSimple": "r5",
+        "levelDouble": "r4",
+        "levelMixte": "p12",
+        "license": "07156523",
+        "club": "LPL53",
+        "registrationDate": "2025-10-24",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "aa0371eb-a970-47da-ad28-6c88015b74de",
+        "lastName": "Simon",
+        "firstName": "Lucie",
+        "gender": "f",
+        "levelSimple": "p12",
+        "levelDouble": "d9",
+        "levelMixte": "r6",
+        "license": "07468800",
+        "club": "BCE72",
+        "registrationDate": "2025-10-14",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "1596a477-25cd-4a67-b00d-028f3446d990",
+        "lastName": "Prevost",
+        "firstName": "Valérie",
+        "gender": "f",
+        "levelSimple": "d7",
+        "levelDouble": "p12",
+        "levelMixte": "p12",
+        "license": "07577319",
+        "club": "BCR41",
+        "registrationDate": "2025-11-23",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "50014b11-129b-416b-994b-4c011fc1b714",
+        "lastName": "Girard",
+        "firstName": "Alice",
+        "gender": "f",
+        "levelSimple": "p11",
+        "levelDouble": "p12",
+        "levelMixte": "p11",
+        "license": "07405503",
+        "club": "BCR41",
+        "registrationDate": "2025-10-19",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "1bbbfe10-aa15-4f3b-aa1d-ce0aa03ec9ad",
+        "lastName": "Boyer",
+        "firstName": "Céline",
+        "gender": "f",
+        "levelSimple": "p10",
+        "levelDouble": "r4",
+        "levelMixte": "nc",
+        "license": "07513441",
+        "club": "ABC44",
+        "registrationDate": "2025-11-13",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "7fb9bcca-f006-418f-a584-f7876a9a594f",
+        "lastName": "Breton",
+        "firstName": "Céline",
+        "gender": "f",
+        "levelSimple": "d9",
+        "levelDouble": "r4",
+        "levelMixte": "nc",
+        "license": "07378175",
+        "club": "BCR41",
+        "registrationDate": "2025-10-23",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "3cd649d5-049a-4cfa-9b38-258859271915",
+        "lastName": "Bourgeois",
+        "firstName": "Aurélien",
+        "gender": "m",
+        "levelSimple": "nc",
+        "levelDouble": "p11",
+        "levelMixte": "nc",
+        "license": "07959638",
+        "club": "ABC44",
+        "registrationDate": "2025-10-20",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "bf8b182b-49b6-46b3-96d2-0abc0065f56b",
+        "lastName": "Bourgeois",
+        "firstName": "Lucas",
+        "gender": "m",
+        "levelSimple": "p11",
+        "levelDouble": "d9",
+        "levelMixte": "p10",
+        "license": "07652413",
+        "club": "BAM49",
+        "registrationDate": "2025-10-26",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "dd9ce74e-9eb1-4a32-91fb-de095eb66c0b",
+        "lastName": "Roy",
+        "firstName": "Hugo",
+        "gender": "m",
+        "levelSimple": "r4",
+        "levelDouble": "r6",
+        "levelMixte": "p11",
+        "license": "07274434",
+        "club": "CSB37",
+        "registrationDate": "2025-10-27",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "13202eb8-b4b7-485c-a8b7-3a7a3faa094a",
+        "lastName": "Laurent",
+        "firstName": "Paul",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "p11",
+        "levelMixte": "p12",
+        "license": "07292574",
+        "club": "LPL53",
+        "registrationDate": "2025-11-11",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "52ca6eaf-a82f-44b2-b220-db2964f012ae",
+        "lastName": "Pasquier",
+        "firstName": "Pauline",
+        "gender": "f",
+        "levelSimple": "d9",
+        "levelDouble": "d8",
+        "levelMixte": "p11",
+        "license": "07639434",
+        "club": "ABC44",
+        "registrationDate": "2025-11-11",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "7bc7bbda-e8e8-4d36-b2d5-ce059893e655",
+        "lastName": "Benoit",
+        "firstName": "Christophe",
+        "gender": "m",
+        "levelSimple": "r5",
+        "levelDouble": "nc",
+        "levelMixte": "d7",
+        "license": "07826767",
+        "club": "SBC72",
+        "registrationDate": "2025-10-20",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "ecb223b1-f320-47e5-94fd-26490a0c829a",
+        "lastName": "Prevost",
+        "firstName": "Valérie",
+        "gender": "f",
+        "levelSimple": "p12",
+        "levelDouble": "r4",
+        "levelMixte": "r5",
+        "license": "07439444",
+        "club": "ABC44",
+        "registrationDate": "2025-10-02",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "fe3eadb7-f8b4-42ae-8970-c839856c808c",
+        "lastName": "Bourgeois",
+        "firstName": "Adrien",
+        "gender": "m",
+        "levelSimple": "nc",
+        "levelDouble": "r5",
+        "levelMixte": "d8",
+        "license": "07963400",
+        "club": "ABC44",
+        "registrationDate": "2025-11-16",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "b9218a48-bb83-4069-9058-ca2c07e87c84",
+        "lastName": "Perez",
+        "firstName": "William",
+        "gender": "m",
+        "levelSimple": "d7",
+        "levelDouble": "p10",
+        "levelMixte": "r5",
+        "license": "07631170",
+        "club": "CEST37",
+        "registrationDate": "2025-10-07",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "50338bf6-d744-48ed-969b-d5d8af2a46c4",
+        "lastName": "Le Gall",
+        "firstName": "Marion",
+        "gender": "f",
+        "levelSimple": "d7",
+        "levelDouble": "p11",
+        "levelMixte": "p12",
+        "license": "07739520",
+        "club": "LPL53",
+        "registrationDate": "2025-11-15",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "b1428808-9466-4345-8c7f-5b182e56dd46",
+        "lastName": "Leclerc",
+        "firstName": "Sandra",
+        "gender": "f",
+        "levelSimple": "nc",
+        "levelDouble": "r4",
+        "levelMixte": "p10",
+        "license": "07506813",
+        "club": "ASPC49",
+        "registrationDate": "2025-11-09",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "cef98119-9cd4-47fb-b944-2b099a0c0638",
+        "lastName": "Fernandez",
+        "firstName": "Zoé",
+        "gender": "f",
+        "levelSimple": "d9",
+        "levelDouble": "d7",
+        "levelMixte": "d8",
+        "license": "07632038",
+        "club": "SBC72",
+        "registrationDate": "2025-10-08",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "df2b9894-b83c-43c4-97a5-a75fe5a84d0a",
+        "lastName": "Chevalier",
+        "firstName": "Damien",
+        "gender": "m",
+        "levelSimple": "d8",
+        "levelDouble": "p12",
+        "levelMixte": "p10",
+        "license": "07220934",
+        "club": "BAM49",
+        "registrationDate": "2025-11-21",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "e0f709df-4165-4c9d-bd35-aa86f1f8064d",
+        "lastName": "Mary",
+        "firstName": "Paul",
+        "gender": "m",
+        "levelSimple": "d7",
+        "levelDouble": "d7",
+        "levelMixte": "d8",
+        "license": "07191745",
+        "club": "LPL53",
+        "registrationDate": "2025-10-13",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": false
+    },
+    {
+        "id": "d84fe1dd-f5ab-45ba-a5e2-82ea414cde43",
+        "lastName": "Leroy",
+        "firstName": "Stéphane",
+        "gender": "m",
+        "levelSimple": "r4",
+        "levelDouble": "p10",
+        "levelMixte": "p12",
+        "license": "07488989",
+        "club": "CSB37",
+        "registrationDate": "2025-11-14",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "457d3306-fcc6-4e84-b942-e2d9de476eeb",
+        "lastName": "Leroy",
+        "firstName": "Frédéric",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "d7",
+        "levelMixte": "p12",
+        "license": "07845736",
+        "club": "ONEA49",
+        "registrationDate": "2025-11-11",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "f3921bf1-69fe-4cea-829e-593a5be8b25e",
+        "lastName": "Dubois",
+        "firstName": "Tony",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "r5",
+        "levelMixte": "p11",
+        "license": "07338414",
+        "club": "SBC72",
+        "registrationDate": "2025-10-21",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "a29827a3-9459-43e8-b23c-ca83a63db6b3",
+        "lastName": "Lefebvre",
+        "firstName": "Guillaume",
+        "gender": "m",
+        "levelSimple": "nc",
+        "levelDouble": "nc",
+        "levelMixte": "p12",
+        "license": "07573817",
+        "club": "CEST37",
+        "registrationDate": "2025-11-09",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "1e7ff30a-9016-4270-b5cf-e29283cb4510",
+        "lastName": "Collin",
+        "firstName": "Pauline",
+        "gender": "f",
+        "levelSimple": "r6",
+        "levelDouble": "d9",
+        "levelMixte": "d8",
+        "license": "07872542",
+        "club": "CSB37",
+        "registrationDate": "2025-10-24",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "d844f00b-a8db-41f2-9ed7-516ac683582b",
+        "lastName": "Rousseau",
+        "firstName": "Antoine",
+        "gender": "m",
+        "levelSimple": "p11",
+        "levelDouble": "nc",
+        "levelMixte": "d9",
+        "license": "07679373",
+        "club": "ABC44",
+        "registrationDate": "2025-11-15",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "6266abf9-0f0f-4bb1-9c4a-8bb636806706",
+        "lastName": "Andre",
+        "firstName": "Charlotte",
+        "gender": "f",
+        "levelSimple": "p10",
+        "levelDouble": "d9",
+        "levelMixte": "r5",
+        "license": "07784354",
+        "club": "BCR41",
+        "registrationDate": "2025-11-28",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "caeb6f5c-5299-4b32-8f32-b61b044b60f4",
+        "lastName": "Boyer",
+        "firstName": "Sophie",
+        "gender": "f",
+        "levelSimple": "nc",
+        "levelDouble": "p11",
+        "levelMixte": "p10",
+        "license": "07275928",
+        "club": "BCR41",
+        "registrationDate": "2025-11-11",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "c64d59d8-3fc6-44f5-8bb5-18669e9e919c",
+        "lastName": "Leclerc",
+        "firstName": "Benoit",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "p11",
+        "levelMixte": "nc",
+        "license": "07747134",
+        "club": "CSB37",
+        "registrationDate": "2025-11-17",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "461f4a35-eec5-4a43-933b-0e350a362807",
+        "lastName": "Garcia",
+        "firstName": "Aurélie",
+        "gender": "f",
+        "levelSimple": "r4",
+        "levelDouble": "d7",
+        "levelMixte": "r4",
+        "license": "07746681",
+        "club": "USL72",
+        "registrationDate": "2025-11-17",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "93b3187a-90f7-4d8e-8e62-ec257150e475",
+        "lastName": "Le Gall",
+        "firstName": "Valérie",
+        "gender": "f",
+        "levelSimple": "d9",
+        "levelDouble": "p12",
+        "levelMixte": "nc",
+        "license": "07993107",
+        "club": "BCR41",
+        "registrationDate": "2025-11-05",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": false
+    },
+    {
+        "id": "cc96065a-8929-45b7-9776-58af7ae70d0c",
+        "lastName": "Fournier",
+        "firstName": "Olivier",
+        "gender": "m",
+        "levelSimple": "r4",
+        "levelDouble": "d7",
+        "levelMixte": "d9",
+        "license": "07473900",
+        "club": "ABC44",
+        "registrationDate": "2025-11-26",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "e0fc9568-7966-45f4-87a0-0c0526d4aaf7",
+        "lastName": "Lefebvre",
+        "firstName": "Anthony",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "r4",
+        "levelMixte": "d8",
+        "license": "07211281",
+        "club": "CEST37",
+        "registrationDate": "2025-11-14",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "6912b867-33b4-4d9f-994a-7bac27e03efc",
+        "lastName": "Chevalier",
+        "firstName": "Fabrice",
+        "gender": "m",
+        "levelSimple": "nc",
+        "levelDouble": "r4",
+        "levelMixte": "p10",
+        "license": "07174106",
+        "club": "BAM49",
+        "registrationDate": "2025-11-12",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "892ee1a9-fadf-4aa3-918f-32e73a0d0089",
+        "lastName": "Le Roux",
+        "firstName": "Pauline",
+        "gender": "f",
+        "levelSimple": "r6",
+        "levelDouble": "r6",
+        "levelMixte": "p10",
+        "license": "07562290",
+        "club": "SCB49",
+        "registrationDate": "2025-11-04",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "fc5b3f87-e73b-4c78-b487-dacc88f7baf5",
+        "lastName": "Da Silva",
+        "firstName": "Clara",
+        "gender": "f",
+        "levelSimple": "r4",
+        "levelDouble": "d9",
+        "levelMixte": "nc",
+        "license": "07979035",
+        "club": "ASPC49",
+        "registrationDate": "2025-11-22",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "68020287-f90f-42c9-ab65-5bc254c65f4b",
+        "lastName": "Charles",
+        "firstName": "Elodie",
+        "gender": "f",
+        "levelSimple": "d8",
+        "levelDouble": "d7",
+        "levelMixte": "r6",
+        "license": "07793008",
+        "club": "LPL53",
+        "registrationDate": "2025-11-01",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "eddf32b0-31c4-4750-97d9-c83a4b9ed934",
+        "lastName": "Nicolas",
+        "firstName": "Audrey",
+        "gender": "f",
+        "levelSimple": "r4",
+        "levelDouble": "r5",
+        "levelMixte": "r6",
+        "license": "07976116",
+        "club": "LPL53",
+        "registrationDate": "2025-11-14",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "e4ccc23d-27ee-4ce7-a638-f9430642ebb6",
+        "lastName": "Nicolas",
+        "firstName": "Virginie",
+        "gender": "f",
+        "levelSimple": "r5",
+        "levelDouble": "d7",
+        "levelMixte": "nc",
+        "license": "07447508",
+        "club": "ABC44",
+        "registrationDate": "2025-10-14",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "26e431b7-dd84-4157-9391-2be951036964",
+        "lastName": "Richard",
+        "firstName": "Charlotte",
+        "gender": "f",
+        "levelSimple": "p12",
+        "levelDouble": "r5",
+        "levelMixte": "d9",
+        "license": "07832973",
+        "club": "CEST37",
+        "registrationDate": "2025-10-03",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "4f7b3b09-66dd-4921-abc6-c6329e229219",
+        "lastName": "Girard",
+        "firstName": "Adrien",
+        "gender": "m",
+        "levelSimple": "r4",
+        "levelDouble": "p11",
+        "levelMixte": "nc",
+        "license": "07449623",
+        "club": "JSC72",
+        "registrationDate": "2025-11-25",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": false
+    },
+    {
+        "id": "8f94b99e-8bdc-4271-b85c-bbe456fc3efe",
+        "lastName": "Perez",
+        "firstName": "Damien",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "r4",
+        "levelMixte": "d8",
+        "license": "07220050",
+        "club": "SBC72",
+        "registrationDate": "2025-10-19",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "e97d36f6-5ad7-4d7d-bde8-ea2cdfe44e01",
+        "lastName": "Benoit",
+        "firstName": "Hélène",
+        "gender": "f",
+        "levelSimple": "r4",
+        "levelDouble": "r5",
+        "levelMixte": "p10",
+        "license": "07524393",
+        "club": "BCR41",
+        "registrationDate": "2025-10-04",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "4330aeaa-5ab8-4372-bcb7-2b40f73bee20",
+        "lastName": "Hardy",
+        "firstName": "Kévin",
+        "gender": "m",
+        "levelSimple": "r5",
+        "levelDouble": "p12",
+        "levelMixte": "p10",
+        "license": "07537518",
+        "club": "USL72",
+        "registrationDate": "2025-11-10",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "021c85a5-1a42-496f-9115-904eea139cb4",
+        "lastName": "Philippe",
+        "firstName": "Marion",
+        "gender": "f",
+        "levelSimple": "p10",
+        "levelDouble": "r4",
+        "levelMixte": "r5",
+        "license": "07784621",
+        "club": "USL72",
+        "registrationDate": "2025-10-14",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "62d6b002-c749-44a5-a7e0-7fc52caf255d",
+        "lastName": "Guyot",
+        "firstName": "Fabien",
+        "gender": "m",
+        "levelSimple": "r5",
+        "levelDouble": "r4",
+        "levelMixte": "p12",
+        "license": "07568030",
+        "club": "CEST37",
+        "registrationDate": "2025-10-11",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "6b7bf350-58c3-4a94-9769-b40bbd6988e7",
+        "lastName": "Francois",
+        "firstName": "Zoé",
+        "gender": "f",
+        "levelSimple": "r4",
+        "levelDouble": "d9",
+        "levelMixte": "d7",
+        "license": "07303688",
+        "club": "ABC44",
+        "registrationDate": "2025-11-09",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": false
+    },
+    {
+        "id": "e27e4a2f-e2eb-4804-8533-89c8e1a395e7",
+        "lastName": "Robert",
+        "firstName": "Christophe",
+        "gender": "m",
+        "levelSimple": "r6",
+        "levelDouble": "d8",
+        "levelMixte": "r6",
+        "license": "07664223",
+        "club": "USL72",
+        "registrationDate": "2025-11-21",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "e0c51de0-b38b-4b26-b95b-70a61c35c08d",
+        "lastName": "Muller",
+        "firstName": "Gaelle",
+        "gender": "f",
+        "levelSimple": "d7",
+        "levelDouble": "r4",
+        "levelMixte": "d8",
+        "license": "07723986",
+        "club": "ABC44",
+        "registrationDate": "2025-11-27",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "1695c951-45dc-443c-8a0e-4f8eb1298018",
+        "lastName": "Bourgeois",
+        "firstName": "Inès",
+        "gender": "f",
+        "levelSimple": "r6",
+        "levelDouble": "d9",
+        "levelMixte": "d9",
+        "license": "07521428",
+        "club": "BAM49",
+        "registrationDate": "2025-11-25",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "9470a478-16fe-4e59-b975-8210590f2a60",
+        "lastName": "Adam",
+        "firstName": "Elodie",
+        "gender": "f",
+        "levelSimple": "p12",
+        "levelDouble": "p10",
+        "levelMixte": "d7",
+        "license": "07962866",
+        "club": "ASPC49",
+        "registrationDate": "2025-10-07",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "b5b01273-c884-4194-80b6-416f70976bc9",
+        "lastName": "Chevalier",
+        "firstName": "Paul",
+        "gender": "m",
+        "levelSimple": "p10",
+        "levelDouble": "d9",
+        "levelMixte": "p11",
+        "license": "07895049",
+        "club": "CEST37",
+        "registrationDate": "2025-10-01",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "a7e113d0-66fb-4b4a-a641-c20234758039",
+        "lastName": "Deschamps",
+        "firstName": "Sandrine",
+        "gender": "f",
+        "levelSimple": "p10",
+        "levelDouble": "p12",
+        "levelMixte": "r6",
+        "license": "07184200",
+        "club": "CEST37",
+        "registrationDate": "2025-10-13",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "c4677118-f2bf-40bd-964f-fd9b75807a3d",
+        "lastName": "Muller",
+        "firstName": "Anaïs",
+        "gender": "f",
+        "levelSimple": "p12",
+        "levelDouble": "d8",
+        "levelMixte": "r4",
+        "license": "07387360",
+        "club": "USL72",
+        "registrationDate": "2025-11-04",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "5aef0871-5dd4-453e-86b4-e73b96637201",
+        "lastName": "Le Roux",
+        "firstName": "Florian",
+        "gender": "m",
+        "levelSimple": "p10",
+        "levelDouble": "r6",
+        "levelMixte": "r4",
+        "license": "07202000",
+        "club": "SBC72",
+        "registrationDate": "2025-10-12",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "7315e238-5a2e-45b8-a5d1-2a5b58b2be65",
+        "lastName": "Blanc",
+        "firstName": "Julien",
+        "gender": "m",
+        "levelSimple": "r6",
+        "levelDouble": "p12",
+        "levelMixte": "r5",
+        "license": "07309361",
+        "club": "CEST37",
+        "registrationDate": "2025-11-20",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "f1416081-3df1-43a3-b09a-f258fce05451",
+        "lastName": "Jacquet",
+        "firstName": "Juliette",
+        "gender": "f",
+        "levelSimple": "d9",
+        "levelDouble": "d9",
+        "levelMixte": "p12",
+        "license": "07811224",
+        "club": "SBC72",
+        "registrationDate": "2025-10-21",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "b6bc5d16-63af-487c-84e8-17db26f56a4b",
+        "lastName": "Lambert",
+        "firstName": "Laura",
+        "gender": "f",
+        "levelSimple": "d8",
+        "levelDouble": "r4",
+        "levelMixte": "nc",
+        "license": "07669644",
+        "club": "BCR41",
+        "registrationDate": "2025-10-02",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "2f141c27-3bfb-4c3e-bb10-1fd48baba9af",
+        "lastName": "Bertrand",
+        "firstName": "Pierre",
+        "gender": "m",
+        "levelSimple": "r5",
+        "levelDouble": "r4",
+        "levelMixte": "p12",
+        "license": "07247433",
+        "club": "BCR41",
+        "registrationDate": "2025-10-07",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "b464816f-6b2e-4614-b259-80ca77febc54",
+        "lastName": "Gomez",
+        "firstName": "Inès",
+        "gender": "f",
+        "levelSimple": "r5",
+        "levelDouble": "r4",
+        "levelMixte": "d8",
+        "license": "07116357",
+        "club": "CSB37",
+        "registrationDate": "2025-10-11",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "1394a194-a679-4576-85ed-5e14e2f9beb9",
+        "lastName": "Leclerc",
+        "firstName": "Stéphane",
+        "gender": "m",
+        "levelSimple": "p12",
+        "levelDouble": "p12",
+        "levelMixte": "p11",
+        "license": "07687284",
+        "club": "LPL53",
+        "registrationDate": "2025-11-06",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "e2e43ba3-b15c-4d7b-b14d-197da4f8ecae",
+        "lastName": "Bonnet",
+        "firstName": "Delphine",
+        "gender": "f",
+        "levelSimple": "nc",
+        "levelDouble": "p11",
+        "levelMixte": "r4",
+        "license": "07469781",
+        "club": "BCE72",
+        "registrationDate": "2025-11-11",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "dbfaf657-7f89-4d81-a37f-63878d00743c",
+        "lastName": "Mathieu",
+        "firstName": "Amélie",
+        "gender": "f",
+        "levelSimple": "nc",
+        "levelDouble": "d7",
+        "levelMixte": "d9",
+        "license": "07157595",
+        "club": "BCR41",
+        "registrationDate": "2025-10-11",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "7db5485e-5f0e-4c86-af16-f6e36e84502e",
+        "lastName": "Marchal",
+        "firstName": "Aurélien",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "p11",
+        "levelMixte": "nc",
+        "license": "07892514",
+        "club": "CEST37",
+        "registrationDate": "2025-11-23",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "41576cc7-b7da-42e2-a864-233c0782b465",
+        "lastName": "Perez",
+        "firstName": "Yoann",
+        "gender": "m",
+        "levelSimple": "r6",
+        "levelDouble": "p10",
+        "levelMixte": "d8",
+        "license": "07744755",
+        "club": "LPL53",
+        "registrationDate": "2025-11-07",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "7d2a9a5c-1723-4979-b08e-7db8b86f53bc",
+        "lastName": "Pasquier",
+        "firstName": "Alexandre",
+        "gender": "m",
+        "levelSimple": "d7",
+        "levelDouble": "p12",
+        "levelMixte": "r6",
+        "license": "07675730",
+        "club": "BAM49",
+        "registrationDate": "2025-11-23",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "96e36380-9c33-4800-bf0f-b2420681399f",
+        "lastName": "Deschamps",
+        "firstName": "Adrien",
+        "gender": "m",
+        "levelSimple": "r5",
+        "levelDouble": "nc",
+        "levelMixte": "r4",
+        "license": "07320722",
+        "club": "SBC72",
+        "registrationDate": "2025-10-06",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "3b1d6e0a-9738-4469-9542-eb0cef122d1a",
+        "lastName": "Bernard",
+        "firstName": "Thomas",
+        "gender": "m",
+        "levelSimple": "p11",
+        "levelDouble": "nc",
+        "levelMixte": "p12",
+        "license": "07576554",
+        "club": "ONEA49",
+        "registrationDate": "2025-11-07",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "a7f25ca7-753d-436d-aebb-140c5ff717e2",
+        "lastName": "Roux",
+        "firstName": "Emilie",
+        "gender": "f",
+        "levelSimple": "d8",
+        "levelDouble": "d8",
+        "levelMixte": "p12",
+        "license": "07650554",
+        "club": "ASPC49",
+        "registrationDate": "2025-11-15",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "589a846d-46c5-4f31-8b27-a855c75096b3",
+        "lastName": "Richard",
+        "firstName": "Valentin",
+        "gender": "m",
+        "levelSimple": "r4",
+        "levelDouble": "p12",
+        "levelMixte": "p10",
+        "license": "07760171",
+        "club": "ABC44",
+        "registrationDate": "2025-11-23",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "3d5358da-0d20-4000-9c31-6c7585ed8b93",
+        "lastName": "Hubert",
+        "firstName": "Karine",
+        "gender": "f",
+        "levelSimple": "r6",
+        "levelDouble": "r4",
+        "levelMixte": "d8",
+        "license": "07997650",
+        "club": "LPL53",
+        "registrationDate": "2025-11-03",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "444268ac-9aca-4a5d-863b-522396e44689",
+        "lastName": "Fleury",
+        "firstName": "Cyril",
+        "gender": "m",
+        "levelSimple": "p10",
+        "levelDouble": "r5",
+        "levelMixte": "r4",
+        "license": "07231233",
+        "club": "CSB37",
+        "registrationDate": "2025-10-19",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "39bdb2ba-fa67-44d1-a4bb-e813e6f74f84",
+        "lastName": "Schmitt",
+        "firstName": "Clara",
+        "gender": "f",
+        "levelSimple": "p11",
+        "levelDouble": "r5",
+        "levelMixte": "nc",
+        "license": "07719011",
+        "club": "BCR41",
+        "registrationDate": "2025-10-13",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "d792f69d-b414-4c1d-87c5-88619895bd5a",
+        "lastName": "Vincent",
+        "firstName": "Océane",
+        "gender": "f",
+        "levelSimple": "p11",
+        "levelDouble": "p10",
+        "levelMixte": "d8",
+        "license": "07964315",
+        "club": "BCR41",
+        "registrationDate": "2025-10-13",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "03ede4fe-0049-46c3-bf9d-2c810de11991",
+        "lastName": "Legrand",
+        "firstName": "Ronan",
+        "gender": "m",
+        "levelSimple": "d8",
+        "levelDouble": "p11",
+        "levelMixte": "d9",
+        "license": "07369088",
+        "club": "ONEA49",
+        "registrationDate": "2025-10-11",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "55bc0df4-d97d-4254-aba0-8a11fa9af99c",
+        "lastName": "Masson",
+        "firstName": "Anaïs",
+        "gender": "f",
+        "levelSimple": "d8",
+        "levelDouble": "p11",
+        "levelMixte": "p11",
+        "license": "07827303",
+        "club": "CSB37",
+        "registrationDate": "2025-11-11",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "d9480c4b-7b7a-482f-9650-68469cd39b73",
+        "lastName": "Michel",
+        "firstName": "Sandra",
+        "gender": "f",
+        "levelSimple": "r5",
+        "levelDouble": "d8",
+        "levelMixte": "d8",
+        "license": "07421740",
+        "club": "LPL53",
+        "registrationDate": "2025-10-15",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "d9f72542-fe47-4fb5-b2b8-2b4e5f7a9f2d",
+        "lastName": "Jacquet",
+        "firstName": "Julien",
+        "gender": "m",
+        "levelSimple": "p11",
+        "levelDouble": "p12",
+        "levelMixte": "r5",
+        "license": "07132566",
+        "club": "BAM49",
+        "registrationDate": "2025-10-20",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "e3e8883e-0e1d-4263-aefd-9df0ddb6f391",
+        "lastName": "Hardy",
+        "firstName": "Sarah",
+        "gender": "f",
+        "levelSimple": "r5",
+        "levelDouble": "d9",
+        "levelMixte": "p10",
+        "license": "07650146",
+        "club": "CEST37",
+        "registrationDate": "2025-10-20",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "7502d896-70bc-4ede-98b9-d4bf470ae3f9",
+        "lastName": "Barbier",
+        "firstName": "William",
+        "gender": "m",
+        "levelSimple": "nc",
+        "levelDouble": "p11",
+        "levelMixte": "d7",
+        "license": "07963992",
+        "club": "CSB37",
+        "registrationDate": "2025-11-28",
+        "wishesSimple": true,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "0e6e2c29-4f30-406a-a7e7-a7cad3fa5ab7",
+        "lastName": "Lefebvre",
+        "firstName": "Sandrine",
+        "gender": "f",
+        "levelSimple": "p12",
+        "levelDouble": "r5",
+        "levelMixte": "r4",
+        "license": "07418467",
+        "club": "BCR41",
+        "registrationDate": "2025-11-23",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "5ee27346-e0c1-487d-b972-735e06072d4e",
+        "lastName": "Schmitt",
+        "firstName": "Mathieu",
+        "gender": "m",
+        "levelSimple": "r4",
+        "levelDouble": "p10",
+        "levelMixte": "p12",
+        "license": "07391516",
+        "club": "USL72",
+        "registrationDate": "2025-11-28",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "fd3cc188-2961-43c6-ae00-1fa2728d30ee",
+        "lastName": "Philippe",
+        "firstName": "Céline",
+        "gender": "f",
+        "levelSimple": "d8",
+        "levelDouble": "d9",
+        "levelMixte": "d7",
+        "license": "07814596",
+        "club": "JSC72",
+        "registrationDate": "2025-10-01",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": false
+    },
+    {
+        "id": "2dc25d6f-5db4-49e7-b7cd-706a15ceb423",
+        "lastName": "Michel",
+        "firstName": "Enzo",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "d7",
+        "levelMixte": "r5",
+        "license": "07380883",
+        "club": "ONEA49",
+        "registrationDate": "2025-10-16",
+        "wishesSimple": false,
+        "wishesDouble": false,
+        "wishesMixte": true
+    },
+    {
+        "id": "d3a9f76f-e659-4eab-95d4-c26d71876095",
+        "lastName": "Morel",
+        "firstName": "Matthieu",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "d7",
+        "levelMixte": "p12",
+        "license": "07995540",
+        "club": "BCE72",
+        "registrationDate": "2025-11-14",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "63477ef0-9133-4689-b2b0-33f66ebd69b3",
+        "lastName": "Michel",
+        "firstName": "Aurélie",
+        "gender": "f",
+        "levelSimple": "r5",
+        "levelDouble": "d7",
+        "levelMixte": "d8",
+        "license": "07805969",
+        "club": "BAM49",
+        "registrationDate": "2025-10-11",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "24748af0-75ae-49ac-8de1-f6369570512a",
+        "lastName": "Gomez",
+        "firstName": "Antoine",
+        "gender": "m",
+        "levelSimple": "d9",
+        "levelDouble": "p11",
+        "levelMixte": "d9",
+        "license": "07171537",
+        "club": "SBC72",
+        "registrationDate": "2025-11-20",
+        "wishesSimple": false,
+        "wishesDouble": true,
+        "wishesMixte": true
+    },
+    {
+        "id": "7c60ca11-183b-4a41-9490-81ccd57632a1",
+        "lastName": "Bernard",
+        "firstName": "Alice",
+        "gender": "f",
+        "levelSimple": "d7",
+        "levelDouble": "p10",
+        "levelMixte": "r4",
+        "license": "07252631",
+        "club": "CEST37",
+        "registrationDate": "2025-10-13",
+        "wishesSimple": true,
+        "wishesDouble": true,
+        "wishesMixte": true
+    }
+];
             
             isLoadingPlayers = false;
 
-            // 2. MODIFIÉ : Créer des tournois de test
+            // 2. Injecter les tournois générés par le script Python
             allTournaments = [
-                { id: crypto.randomUUID(), name: "Simple Hommes R/D", type: "simple", participants: [] },
-                { id: crypto.randomUUID(), name: "Double Dames P", type: "double", participants: [] },
-                { id: crypto.randomUUID(), name: "Mixte D/P/NC", type: "mixte", participants: [] }
-            ];
-
-            // 3. MODIFIÉ : Ajouter des participants aux tournois de test
-            try {
-                // Participants pour Simple Hommes
-                const simpleTournament = allTournaments[0];
-                const p1 = allPlayers.find(p => p.lastName === "Martin");
-                const p2 = allPlayers.find(p => p.lastName === "Ravary");
-                const p3 = allPlayers.find(p => p.lastName === "Herillard");
-                if (p1) simpleTournament.participants.push({ participantId: crypto.randomUUID(), playerId: p1.id });
-                if (p2) simpleTournament.participants.push({ participantId: crypto.randomUUID(), playerId: p2.id });
-                if (p3) simpleTournament.participants.push({ participantId: crypto.randomUUID(), playerId: p3.id });
-
-                // Participants pour Double Dames
-                const doubleTournament = allTournaments[1];
-                const p4 = allPlayers.find(p => p.lastName === "Dubois");
-                const p5 = allPlayers.find(p => p.lastName === "Dupont");
-                const p6 = allPlayers.find(p => p.lastName === "Vetu");
-                const p7 = allPlayers.find(p => p.lastName === "Rosaenz");
-                if (p4 && p5) doubleTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p4.id, player2Id: p5.id });
-                if (p6 && p7) doubleTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p6.id, player2Id: p7.id });
-
-                // Participants pour Mixte
-                const mixteTournament = allTournaments[2];
-                const p8 = allPlayers.find(p => p.lastName === "Taugourdeau");
-                const p9 = allPlayers.find(p => p.lastName === "Mellet");
-                const p10 = allPlayers.find(p => p.lastName === "Chaintron");
-                if (p8 && p9) mixteTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p9.id, player2Id: p8.id }); // Elie + Gwenaelle
-                if (p1 && p10) mixteTournament.participants.push({ participantId: crypto.randomUUID(), player1Id: p1.id, player2Id: p10.id }); // Vincent + Mylene
-            
-            } catch (e) {
-                console.error("Erreur lors de la création des données de test:", e);
+    {
+        "id": "f0850354-81ee-42a0-9ae3-bd3dd6938126",
+        "name": "Simple Hommes R/D",
+        "type": "simple",
+        "participants": [
+            {
+                "participantId": "69b637da-ecd9-4d95-a038-732c26a09b2b",
+                "playerId": "8f94b99e-8bdc-4271-b85c-bbe456fc3efe"
+            },
+            {
+                "participantId": "6471257e-4e40-4ecf-b7ca-aebfeefec2ae",
+                "playerId": "0f3bca74-83cf-4690-983a-9b08223c05db"
+            },
+            {
+                "participantId": "2cb433fd-d5b6-46b9-8026-40a908477ea3",
+                "playerId": "7315e238-5a2e-45b8-a5d1-2a5b58b2be65"
+            },
+            {
+                "participantId": "1a0915c7-e7fa-4209-854c-a544bee9e7e3",
+                "playerId": "7bc7bbda-e8e8-4d36-b2d5-ce059893e655"
+            },
+            {
+                "participantId": "56d378f8-ba4b-4ac1-989c-e13e08fb8e92",
+                "playerId": "97c75fc3-c6ff-41c6-9ef2-3f32520da4ed"
+            },
+            {
+                "participantId": "fde5f1c9-dc14-49a0-a696-e4c081cf4475",
+                "playerId": "e0fc9568-7966-45f4-87a0-0c0526d4aaf7"
+            },
+            {
+                "participantId": "d421e2bc-91d0-4e7a-b75e-11fe5583abb6",
+                "playerId": "dd9ce74e-9eb1-4a32-91fb-de095eb66c0b"
+            },
+            {
+                "participantId": "bf1fa9e5-e3f0-43d5-ad5b-3a9dde114610",
+                "playerId": "d9f72542-fe47-4fb5-b2b8-2b4e5f7a9f2d"
+            },
+            {
+                "participantId": "2b39ddc1-32e6-4101-9934-1f774b3c9077",
+                "playerId": "5ee27346-e0c1-487d-b972-735e06072d4e"
+            },
+            {
+                "participantId": "5e02060b-4198-4dc7-8e90-f9fb52d9c75e",
+                "playerId": "7502d896-70bc-4ede-98b9-d4bf470ae3f9"
+            },
+            {
+                "participantId": "4498c76a-1cb9-4f2c-9eec-2f500ee9915c",
+                "playerId": "e0f709df-4165-4c9d-bd35-aa86f1f8064d"
+            },
+            {
+                "participantId": "1f70f20b-8b21-4883-a210-bfcc43a65276",
+                "playerId": "7db5485e-5f0e-4c86-af16-f6e36e84502e"
+            },
+            {
+                "participantId": "ade2ecbf-560f-4bf3-9478-b05bbf11773d",
+                "playerId": "c64d59d8-3fc6-44f5-8bb5-18669e9e919c"
+            },
+            {
+                "participantId": "6396e2e3-46c6-449a-87c3-71cffa004e70",
+                "playerId": "444268ac-9aca-4a5d-863b-522396e44689"
+            },
+            {
+                "participantId": "497a2149-5544-41d6-901c-61a8da63a9f8",
+                "playerId": "4f7b3b09-66dd-4921-abc6-c6329e229219"
+            },
+            {
+                "participantId": "14a87f0c-9633-4d3c-a6f7-a675884ea33c",
+                "playerId": "4330aeaa-5ab8-4372-bcb7-2b40f73bee20"
             }
+        ]
+    },
+    {
+        "id": "90efd117-ebb0-42a0-a695-7895b029822b",
+        "name": "Simple Dames R/D",
+        "type": "simple",
+        "participants": [
+            {
+                "participantId": "3039e723-a166-481b-94eb-ed79d8381b76",
+                "playerId": "1695c951-45dc-443c-8a0e-4f8eb1298018"
+            },
+            {
+                "participantId": "c0c6bd7f-0f99-44f2-abc2-0f92582a88c9",
+                "playerId": "6266abf9-0f0f-4bb1-9c4a-8bb636806706"
+            },
+            {
+                "participantId": "c6a7e8ee-5061-4141-81e4-847b4a05eb92",
+                "playerId": "c4677118-f2bf-40bd-964f-fd9b75807a3d"
+            },
+            {
+                "participantId": "a503bea2-e668-4761-a4dd-697cace64f5f",
+                "playerId": "b6bc5d16-63af-487c-84e8-17db26f56a4b"
+            },
+            {
+                "participantId": "91a598a4-3e0a-4049-baaf-fce931873607",
+                "playerId": "26e431b7-dd84-4157-9391-2be951036964"
+            },
+            {
+                "participantId": "ca60d299-9217-4f6c-ab3c-26b270eadc23",
+                "playerId": "1596a477-25cd-4a67-b00d-028f3446d990"
+            },
+            {
+                "participantId": "2ed7e8e2-1a14-4c78-a646-dcc75a1dcf9a",
+                "playerId": "9470a478-16fe-4e59-b975-8210590f2a60"
+            },
+            {
+                "participantId": "8dc8d35c-28a5-4c13-bbd0-48765506a768",
+                "playerId": "7fb9bcca-f006-418f-a584-f7876a9a594f"
+            },
+            {
+                "participantId": "11f6118c-d665-4317-89b9-02e19795aac4",
+                "playerId": "eddf32b0-31c4-4750-97d9-c83a4b9ed934"
+            },
+            {
+                "participantId": "b7ac1f88-9709-4cbf-a238-3d38d1e41892",
+                "playerId": "7c60ca11-183b-4a41-9490-81ccd57632a1"
+            },
+            {
+                "participantId": "14ad839c-822b-4468-a254-1bafc33a5a8e",
+                "playerId": "e97d36f6-5ad7-4d7d-bde8-ea2cdfe44e01"
+            },
+            {
+                "participantId": "7ca301ff-dc2c-4011-873e-8c34f65d7442",
+                "playerId": "021c85a5-1a42-496f-9115-904eea139cb4"
+            },
+            {
+                "participantId": "afdea482-a6d0-4c8e-b2f3-ebfe84913dcd",
+                "playerId": "ab037c02-fea7-4f9f-88e9-63f07b589650"
+            },
+            {
+                "participantId": "c5169a07-6627-4483-bba4-64dd2b0d8931",
+                "playerId": "6b7bf350-58c3-4a94-9769-b40bbd6988e7"
+            },
+            {
+                "participantId": "0ec1aa34-cfa8-458b-85e0-2ab8556a1aaf",
+                "playerId": "39bdb2ba-fa67-44d1-a4bb-e813e6f74f84"
+            },
+            {
+                "participantId": "ea4ccf13-ae16-451d-8e45-5e16138b04ec",
+                "playerId": "50338bf6-d744-48ed-969b-d5d8af2a46c4"
+            }
+        ]
+    },
+    {
+        "id": "65a29097-d064-469a-88f5-60660b2ac87c",
+        "name": "Simple Hommes P/NC",
+        "type": "simple",
+        "participants": [
+            {
+                "participantId": "6e71b03c-ffc3-493d-a5eb-2f8e6a40c9d2",
+                "playerId": "7502d896-70bc-4ede-98b9-d4bf470ae3f9"
+            },
+            {
+                "participantId": "9e5c343c-6181-4915-a02b-9eaac2b4cf43",
+                "playerId": "e0fc9568-7966-45f4-87a0-0c0526d4aaf7"
+            },
+            {
+                "participantId": "98fecaef-f8ed-4307-b78e-716045eb2076",
+                "playerId": "97c75fc3-c6ff-41c6-9ef2-3f32520da4ed"
+            },
+            {
+                "participantId": "4468f864-47cf-49be-a5e8-f4432a534764",
+                "playerId": "4330aeaa-5ab8-4372-bcb7-2b40f73bee20"
+            },
+            {
+                "participantId": "a5408547-1505-4abf-9cbd-4b15e1b7f836",
+                "playerId": "7315e238-5a2e-45b8-a5d1-2a5b58b2be65"
+            },
+            {
+                "participantId": "3b613596-ece2-4f0c-98c9-c858d41aca14",
+                "playerId": "4f7b3b09-66dd-4921-abc6-c6329e229219"
+            },
+            {
+                "participantId": "3b9e8e52-f6ff-41cb-b7dc-5ee9d9c3cad0",
+                "playerId": "8f94b99e-8bdc-4271-b85c-bbe456fc3efe"
+            },
+            {
+                "participantId": "e8ca48c6-96fb-4a5f-9e5d-bacbf77ed42e",
+                "playerId": "0f3bca74-83cf-4690-983a-9b08223c05db"
+            },
+            {
+                "participantId": "7e08eb62-c949-479f-b915-4d096a746e7a",
+                "playerId": "7db5485e-5f0e-4c86-af16-f6e36e84502e"
+            },
+            {
+                "participantId": "70079b83-abf7-4941-91dd-4b824cf9287b",
+                "playerId": "c64d59d8-3fc6-44f5-8bb5-18669e9e919c"
+            },
+            {
+                "participantId": "d5cbdefa-6317-4bdf-aee9-bf88f8147d51",
+                "playerId": "5ee27346-e0c1-487d-b972-735e06072d4e"
+            },
+            {
+                "participantId": "07252796-268b-4d72-89d8-58dabe3f2343",
+                "playerId": "444268ac-9aca-4a5d-863b-522396e44689"
+            },
+            {
+                "participantId": "c07693c8-2d81-4abd-8e16-fbcc390cc3b4",
+                "playerId": "d9f72542-fe47-4fb5-b2b8-2b4e5f7a9f2d"
+            },
+            {
+                "participantId": "970b79dd-616f-425d-aa53-5ef02cc89602",
+                "playerId": "dd9ce74e-9eb1-4a32-91fb-de095eb66c0b"
+            },
+            {
+                "participantId": "664e02f2-5398-43c1-97c5-47dafcbdeff4",
+                "playerId": "e0f709df-4165-4c9d-bd35-aa86f1f8064d"
+            },
+            {
+                "participantId": "fb7f91de-9788-4ee7-b56c-fd5c89128c58",
+                "playerId": "7bc7bbda-e8e8-4d36-b2d5-ce059893e655"
+            }
+        ]
+    },
+    {
+        "id": "6c9dca06-9362-42a5-91c0-baa037fbbd7e",
+        "name": "Double Hommes R/D",
+        "type": "double",
+        "participants": [
+            {
+                "participantId": "bf440fd1-b14e-44c8-850a-30bb82d2574e",
+                "player1Id": "96e36380-9c33-4800-bf0f-b2420681399f",
+                "player2Id": "457d3306-fcc6-4e84-b942-e2d9de476eeb"
+            },
+            {
+                "participantId": "51adba15-ffcf-41c7-9fd2-145b28a51919",
+                "player1Id": "d9f72542-fe47-4fb5-b2b8-2b4e5f7a9f2d",
+                "player2Id": "2f141c27-3bfb-4c3e-bb10-1fd48baba9af"
+            },
+            {
+                "participantId": "4966b058-ef21-4fb6-bfdc-44cc7239507c",
+                "player1Id": "8bca173e-64a3-416c-9400-82a64201501c",
+                "player2Id": "444268ac-9aca-4a5d-863b-522396e44689"
+            },
+            {
+                "participantId": "4b8fb469-8833-4aa8-9ca6-3c61fd98e76c",
+                "player1Id": "8822e3ad-9ab2-4017-8954-bce23785fcaa",
+                "player2Id": "5ee27346-e0c1-487d-b972-735e06072d4e"
+            },
+            {
+                "participantId": "94d1e212-cf17-4246-b335-0b273bbb53c5",
+                "player1Id": "b9218a48-bb83-4069-9058-ca2c07e87c84",
+                "player2Id": "7315e238-5a2e-45b8-a5d1-2a5b58b2be65"
+            },
+            {
+                "participantId": "365c487d-0340-4f2f-a852-ccbaf5cb88a7",
+                "player1Id": "41576cc7-b7da-42e2-a864-233c0782b465",
+                "player2Id": "8f94b99e-8bdc-4271-b85c-bbe456fc3efe"
+            },
+            {
+                "participantId": "18ed4ebf-ee7d-4f9f-a745-288ee5cb59e6",
+                "player1Id": "7db5485e-5f0e-4c86-af16-f6e36e84502e",
+                "player2Id": "d3a9f76f-e659-4eab-95d4-c26d71876095"
+            },
+            {
+                "participantId": "6c039415-c239-48e0-8446-653e9e637325",
+                "player1Id": "7bc7bbda-e8e8-4d36-b2d5-ce059893e655",
+                "player2Id": "0b800560-73ab-405f-9d25-39a28dad3947"
+            }
+        ]
+    },
+    {
+        "id": "6971daf5-030d-4da8-96bc-6a0387c5b21d",
+        "name": "Double Dames R/D",
+        "type": "double",
+        "participants": [
+            {
+                "participantId": "1dc728b4-3022-4014-8df5-b3c1d68ce566",
+                "player1Id": "50338bf6-d744-48ed-969b-d5d8af2a46c4",
+                "player2Id": "2340db19-982c-4ffb-8fd1-bccb9a643d64"
+            },
+            {
+                "participantId": "f41d1db6-685d-4f42-ac0b-e648c8dc2635",
+                "player1Id": "63477ef0-9133-4689-b2b0-33f66ebd69b3",
+                "player2Id": "ab037c02-fea7-4f9f-88e9-63f07b589650"
+            },
+            {
+                "participantId": "6411c29f-175f-41ab-8bca-ace1e0752b7d",
+                "player1Id": "39bdb2ba-fa67-44d1-a4bb-e813e6f74f84",
+                "player2Id": "1e7ff30a-9016-4270-b5cf-e29283cb4510"
+            },
+            {
+                "participantId": "3d9f4b9c-e956-426b-9a1e-e8f8566e8b73",
+                "player1Id": "e97d36f6-5ad7-4d7d-bde8-ea2cdfe44e01",
+                "player2Id": "69b86d3b-cb6f-43b5-9d4e-93c855a8c369"
+            },
+            {
+                "participantId": "4e00c907-c3de-4481-be30-fa4554351d8e",
+                "player1Id": "cef98119-9cd4-47fb-b944-2b099a0c0638",
+                "player2Id": "dbfaf657-7f89-4d81-a37f-63878d00743c"
+            },
+            {
+                "participantId": "e00c3e48-a033-402d-bf24-d6e378a4a177",
+                "player1Id": "d9480c4b-7b7a-482f-9650-68469cd39b73",
+                "player2Id": "ef2f534d-c1ae-4412-8cb2-7beafb76156f"
+            },
+            {
+                "participantId": "6eb1b106-72ca-4fa5-ba24-992bc65c6238",
+                "player1Id": "26e431b7-dd84-4157-9391-2be951036964",
+                "player2Id": "6266abf9-0f0f-4bb1-9c4a-8bb636806706"
+            },
+            {
+                "participantId": "44b13dda-0a28-4b5e-8f5b-c59d0819244c",
+                "player1Id": "ecb223b1-f320-47e5-94fd-26490a0c829a",
+                "player2Id": "caeb6f5c-5299-4b32-8f32-b61b044b60f4"
+            }
+        ]
+    },
+    {
+        "id": "65f0411a-d66a-41e9-9d86-7877a5538251",
+        "name": "Double Hommes P/NC",
+        "type": "double",
+        "participants": [
+            {
+                "participantId": "6b616cfe-07f9-4f7e-ae8c-36471845871c",
+                "player1Id": "7db5485e-5f0e-4c86-af16-f6e36e84502e",
+                "player2Id": "f3921bf1-69fe-4cea-829e-593a5be8b25e"
+            },
+            {
+                "participantId": "c719b930-4c33-4909-aa0a-b9884db5a5dc",
+                "player1Id": "e0fc9568-7966-45f4-87a0-0c0526d4aaf7",
+                "player2Id": "2f141c27-3bfb-4c3e-bb10-1fd48baba9af"
+            },
+            {
+                "participantId": "19994bb0-be9b-49dc-b961-b29885b6c16d",
+                "player1Id": "8bca173e-64a3-416c-9400-82a64201501c",
+                "player2Id": "0b800560-73ab-405f-9d25-39a28dad3947"
+            },
+            {
+                "participantId": "4a82be5a-8016-45c6-87d8-a93cdf65f595",
+                "player1Id": "b9218a48-bb83-4069-9058-ca2c07e87c84",
+                "player2Id": "1394a194-a679-4576-85ed-5e14e2f9beb9"
+            },
+            {
+                "participantId": "3189c294-4617-4ded-9901-a205acf6fa7f",
+                "player1Id": "d9f72542-fe47-4fb5-b2b8-2b4e5f7a9f2d",
+                "player2Id": "457d3306-fcc6-4e84-b942-e2d9de476eeb"
+            },
+            {
+                "participantId": "261c1a82-83d5-4182-b5d7-ae2440021779",
+                "player1Id": "41576cc7-b7da-42e2-a864-233c0782b465",
+                "player2Id": "7bc7bbda-e8e8-4d36-b2d5-ce059893e655"
+            },
+            {
+                "participantId": "2b6f86f9-174d-4d69-8e16-bad30405b8a4",
+                "player1Id": "62d6b002-c749-44a5-a7e0-7fc52caf255d",
+                "player2Id": "e27e4a2f-e2eb-4804-8533-89c8e1a395e7"
+            },
+            {
+                "participantId": "43b6a5e5-4c31-47f9-bea6-618ed5450f88",
+                "player1Id": "cc96065a-8929-45b7-9776-58af7ae70d0c",
+                "player2Id": "5ee27346-e0c1-487d-b972-735e06072d4e"
+            }
+        ]
+    },
+    {
+        "id": "10eb0592-e2f8-4262-9a45-5595a270585d",
+        "name": "Double Dames P/NC",
+        "type": "double",
+        "participants": [
+            {
+                "participantId": "217d4799-75ad-4536-b026-d73a8ed71980",
+                "player1Id": "2340db19-982c-4ffb-8fd1-bccb9a643d64",
+                "player2Id": "1596a477-25cd-4a67-b00d-028f3446d990"
+            },
+            {
+                "participantId": "329e7295-5688-45ff-8f34-508e3befa933",
+                "player1Id": "dbfaf657-7f89-4d81-a37f-63878d00743c",
+                "player2Id": "39bdb2ba-fa67-44d1-a4bb-e813e6f74f84"
+            },
+            {
+                "participantId": "2422b5f4-8d3f-40d8-9b41-35cea2824abc",
+                "player1Id": "e97d36f6-5ad7-4d7d-bde8-ea2cdfe44e01",
+                "player2Id": "e4ccc23d-27ee-4ce7-a638-f9430642ebb6"
+            },
+            {
+                "participantId": "6b6da951-cb02-431b-a431-e54864f151d5",
+                "player1Id": "b464816f-6b2e-4614-b259-80ca77febc54",
+                "player2Id": "9470a478-16fe-4e59-b975-8210590f2a60"
+            },
+            {
+                "participantId": "f71b81f1-61b7-458f-ae5d-2e37221dcf4c",
+                "player1Id": "892ee1a9-fadf-4aa3-918f-32e73a0d0089",
+                "player2Id": "fd3cc188-2961-43c6-ae00-1fa2728d30ee"
+            },
+            {
+                "participantId": "f69c88aa-83a2-48f0-a1d3-add5a34ec983",
+                "player1Id": "1bbbfe10-aa15-4f3b-aa1d-ce0aa03ec9ad",
+                "player2Id": "e0c51de0-b38b-4b26-b95b-70a61c35c08d"
+            },
+            {
+                "participantId": "72016229-1295-4259-8662-3bbd7327db35",
+                "player1Id": "d9480c4b-7b7a-482f-9650-68469cd39b73",
+                "player2Id": "eddf32b0-31c4-4750-97d9-c83a4b9ed934"
+            },
+            {
+                "participantId": "e350382a-ceab-4a4c-9802-5e36cedb8d90",
+                "player1Id": "ecb223b1-f320-47e5-94fd-26490a0c829a",
+                "player2Id": "68020287-f90f-42c9-ab65-5bc254c65f4b"
+            }
+        ]
+    },
+    {
+        "id": "bc53d252-f87f-4d7c-becb-8d8ee9a2a7d0",
+        "name": "Mixte R/D",
+        "type": "mixte",
+        "participants": [
+            {
+                "participantId": "3e471a34-2e0e-4755-88e1-13a71ba07bb2",
+                "player1Id": "e27e4a2f-e2eb-4804-8533-89c8e1a395e7",
+                "player2Id": "a7e113d0-66fb-4b4a-a641-c20234758039"
+            },
+            {
+                "participantId": "4358f575-d22e-4d7e-bd19-766f5720b7cb",
+                "player1Id": "8bca173e-64a3-416c-9400-82a64201501c",
+                "player2Id": "e4ccc23d-27ee-4ce7-a638-f9430642ebb6"
+            },
+            {
+                "participantId": "0cfe30f3-8521-4cc7-b824-23990a2beec8",
+                "player1Id": "f3921bf1-69fe-4cea-829e-593a5be8b25e",
+                "player2Id": "b1428808-9466-4345-8c7f-5b182e56dd46"
+            },
+            {
+                "participantId": "0346e4e1-7080-41bd-8933-b55f5df1629a",
+                "player1Id": "d3a9f76f-e659-4eab-95d4-c26d71876095",
+                "player2Id": "1e7ff30a-9016-4270-b5cf-e29283cb4510"
+            },
+            {
+                "participantId": "a6d91fa9-ede6-465c-90fd-4b8f746e3691",
+                "player1Id": "4330aeaa-5ab8-4372-bcb7-2b40f73bee20",
+                "player2Id": "9470a478-16fe-4e59-b975-8210590f2a60"
+            },
+            {
+                "participantId": "7629da60-1621-4df3-8075-033701298dc3",
+                "player1Id": "45e977c8-8477-4665-9024-9cef3e82d151",
+                "player2Id": "aa0371eb-a970-47da-ad28-6c88015b74de"
+            },
+            {
+                "participantId": "20278de5-b4aa-432e-83d3-87dd597ee051",
+                "player1Id": "df2b9894-b83c-43c4-97a5-a75fe5a84d0a",
+                "player2Id": "cef98119-9cd4-47fb-b944-2b099a0c0638"
+            },
+            {
+                "participantId": "2f935390-4aed-4f02-b1cb-360986c89e77",
+                "player1Id": "24748af0-75ae-49ac-8de1-f6369570512a",
+                "player2Id": "63477ef0-9133-4689-b2b0-33f66ebd69b3"
+            },
+            {
+                "participantId": "ab40ba2f-e77d-4072-82f0-aaf3bab49412",
+                "player1Id": "3b1d6e0a-9738-4469-9542-eb0cef122d1a",
+                "player2Id": "68020287-f90f-42c9-ab65-5bc254c65f4b"
+            },
+            {
+                "participantId": "04aa24e6-e6db-41f1-85ff-76584b7aba78",
+                "player1Id": "8f94b99e-8bdc-4271-b85c-bbe456fc3efe",
+                "player2Id": "f1416081-3df1-43a3-b09a-f258fce05451"
+            },
+            {
+                "participantId": "8c5f9b98-3cac-4275-95cf-087a6e0a0924",
+                "player1Id": "2f141c27-3bfb-4c3e-bb10-1fd48baba9af",
+                "player2Id": "3d5358da-0d20-4000-9c31-6c7585ed8b93"
+            },
+            {
+                "participantId": "3fd89138-1b73-4344-a22a-4a87eed6360c",
+                "player1Id": "7502d896-70bc-4ede-98b9-d4bf470ae3f9",
+                "player2Id": "7c60ca11-183b-4a41-9490-81ccd57632a1"
+            }
+        ]
+    },
+    {
+        "id": "620aa1f2-ca5b-4c20-8fa1-f33564042277",
+        "name": "Mixte P/NC",
+        "type": "mixte",
+        "participants": [
+            {
+                "participantId": "bd5098fe-9431-486f-bb2b-96f592cc23a0",
+                "player1Id": "d844f00b-a8db-41f2-9ed7-516ac683582b",
+                "player2Id": "3d5358da-0d20-4000-9c31-6c7585ed8b93"
+            },
+            {
+                "participantId": "184a15b3-f930-4e91-8631-2e4ff0e2a792",
+                "player1Id": "41576cc7-b7da-42e2-a864-233c0782b465",
+                "player2Id": "69b86d3b-cb6f-43b5-9d4e-93c855a8c369"
+            },
+            {
+                "participantId": "48a4a052-d1a9-4132-be7a-87c39fcc1246",
+                "player1Id": "ef73bcae-2cc9-4b47-95ae-7366d823d6fe",
+                "player2Id": "1596a477-25cd-4a67-b00d-028f3446d990"
+            },
+            {
+                "participantId": "47e13c5a-e240-4104-96b0-482c479d3508",
+                "player1Id": "d84fe1dd-f5ab-45ba-a5e2-82ea414cde43",
+                "player2Id": "26e431b7-dd84-4157-9391-2be951036964"
+            },
+            {
+                "participantId": "80a280d0-88b9-48ed-8cea-c523a52c7ad1",
+                "player1Id": "96e36380-9c33-4800-bf0f-b2420681399f",
+                "player2Id": "cef98119-9cd4-47fb-b944-2b099a0c0638"
+            },
+            {
+                "participantId": "e88093fe-41c1-419d-b3f6-b2da2110259a",
+                "player1Id": "fe3eadb7-f8b4-42ae-8970-c839856c808c",
+                "player2Id": "d9480c4b-7b7a-482f-9650-68469cd39b73"
+            },
+            {
+                "participantId": "ec6b5560-6081-40ed-b945-b68b412dd6fc",
+                "player1Id": "d3a9f76f-e659-4eab-95d4-c26d71876095",
+                "player2Id": "e97d36f6-5ad7-4d7d-bde8-ea2cdfe44e01"
+            },
+            {
+                "participantId": "c9503a26-7c57-4c8f-93d3-c1163c93551d",
+                "player1Id": "a29827a3-9459-43e8-b23c-ca83a63db6b3",
+                "player2Id": "7c60ca11-183b-4a41-9490-81ccd57632a1"
+            },
+            {
+                "participantId": "39a9ca2f-71df-4e5a-a8ab-d0303690e25b",
+                "player1Id": "f3921bf1-69fe-4cea-829e-593a5be8b25e",
+                "player2Id": "55bc0df4-d97d-4254-aba0-8a11fa9af99c"
+            },
+            {
+                "participantId": "657a8272-3e47-40b5-82ea-f05e50383add",
+                "player1Id": "8822e3ad-9ab2-4017-8954-bce23785fcaa",
+                "player2Id": "b6bc5d16-63af-487c-84e8-17db26f56a4b"
+            },
+            {
+                "participantId": "04f21c63-fd69-4587-ac19-08b91fa96d1b",
+                "player1Id": "d9f72542-fe47-4fb5-b2b8-2b4e5f7a9f2d",
+                "player2Id": "e3e8883e-0e1d-4263-aefd-9df0ddb6f391"
+            },
+            {
+                "participantId": "2581645c-a3b7-4638-b8db-6ef9a051f12f",
+                "player1Id": "2dc25d6f-5db4-49e7-b7cd-706a15ceb423",
+                "player2Id": "7fb9bcca-f006-418f-a584-f7876a9a594f"
+            }
+        ]
+    },
+    {
+        "id": "c329d5bb-347f-418f-842f-6291b37ea1ba",
+        "name": "Mixte Débutant",
+        "type": "mixte",
+        "participants": [
+            {
+                "participantId": "0009d868-74eb-41d0-9f77-a258bbe86db3",
+                "player1Id": "41576cc7-b7da-42e2-a864-233c0782b465",
+                "player2Id": "3d5358da-0d20-4000-9c31-6c7585ed8b93"
+            },
+            {
+                "participantId": "45ff7e5c-a959-4554-abb5-358c25eb708f",
+                "player1Id": "b9218a48-bb83-4069-9058-ca2c07e87c84",
+                "player2Id": "461f4a35-eec5-4a43-933b-0e350a362807"
+            },
+            {
+                "participantId": "25e0f81a-3064-44b9-b73e-f3991af62dc5",
+                "player1Id": "e0fc9568-7966-45f4-87a0-0c0526d4aaf7",
+                "player2Id": "c4677118-f2bf-40bd-964f-fd9b75807a3d"
+            },
+            {
+                "participantId": "87f8801d-35d2-4e82-8c02-8abf6dc797b5",
+                "player1Id": "1394a194-a679-4576-85ed-5e14e2f9beb9",
+                "player2Id": "26e431b7-dd84-4157-9391-2be951036964"
+            },
+            {
+                "participantId": "23434f10-0696-4696-914a-5f2b3801e44c",
+                "player1Id": "7d2a9a5c-1723-4979-b08e-7db8b86f53bc",
+                "player2Id": "68020287-f90f-42c9-ab65-5bc254c65f4b"
+            },
+            {
+                "participantId": "08a0e1f6-0e9d-44e3-8e27-a8fc2ccbcd35",
+                "player1Id": "d844f00b-a8db-41f2-9ed7-516ac683582b",
+                "player2Id": "7c60ca11-183b-4a41-9490-81ccd57632a1"
+            },
+            {
+                "participantId": "5dd7d446-c993-4ff5-bc17-759f50f4d863",
+                "player1Id": "589a846d-46c5-4f31-8b27-a855c75096b3",
+                "player2Id": "ab037c02-fea7-4f9f-88e9-63f07b589650"
+            },
+            {
+                "participantId": "8be06213-a5b3-46d9-bd2f-56d2769d351f",
+                "player1Id": "7315e238-5a2e-45b8-a5d1-2a5b58b2be65",
+                "player2Id": "a7f25ca7-753d-436d-aebb-140c5ff717e2"
+            },
+            {
+                "participantId": "6507463e-0daa-465c-978f-39f6abf9dbfb",
+                "player1Id": "0f3bca74-83cf-4690-983a-9b08223c05db",
+                "player2Id": "1e7ff30a-9016-4270-b5cf-e29283cb4510"
+            },
+            {
+                "participantId": "fc855f08-026b-4892-a67d-7621e4a3e269",
+                "player1Id": "7bc7bbda-e8e8-4d36-b2d5-ce059893e655",
+                "player2Id": "0e6e2c29-4f30-406a-a7e7-a7cad3fa5ab7"
+            },
+            {
+                "participantId": "1ac3cee4-1a9e-4278-92a1-14f57d86732e",
+                "player1Id": "df2b9894-b83c-43c4-97a5-a75fe5a84d0a",
+                "player2Id": "52ca6eaf-a82f-44b2-b220-db2964f012ae"
+            },
+            {
+                "participantId": "1b460492-1d58-4064-9837-a0355fafe08b",
+                "player1Id": "dd9ce74e-9eb1-4a32-91fb-de095eb66c0b",
+                "player2Id": "b6bc5d16-63af-487c-84e8-17db26f56a4b"
+            }
+        ]
+    }
+];
             
-            // 4. Rendre l'interface
+            // 3. Rendre l'interface
             renderPlayers();
             renderTournamentsList();
             renderSidebarTournaments();
@@ -668,6 +2731,14 @@
             if (wishes.length === 0) return '-';
             return wishes.join(' / ');
         }
+        // NOUVEL AJOUT: Helper pour les emojis
+                function getTypeEmoji(type) {
+                    if (type === 'simple') return '👤';
+                    if (type === 'double') return '👥';
+                    if (type === 'mixte') return '🧑‍🤝‍🧑'; // Emoji couple neutre
+                    return '❓';
+                }
+
         
         // Trouve un joueur par ID (helper)
         function getPlayerById(playerId) {
@@ -801,12 +2872,13 @@
                 return;
             }
             tournamentsTableBody.innerHTML = sortedTournaments.map(t => {
+                const emoji = getTypeEmoji(t.type);
                 // Compte les participants uniques (gère simples et paires)
                 const participantCount = t.participants.length; 
                 
                 return `
                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${t.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${emoji} ${t.name}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 capitalize">${t.type}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${participantCount} ${t.type === 'simple' ? 'joueur(s)' : 'paire(s)'}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
@@ -819,24 +2891,67 @@
         }
 
         function renderSidebarTournaments() {
-            if (allTournaments.length === 0) {
-                sidebarTournamentsList.innerHTML = `<p class="px-3 text-sm text-gray-500">Aucun tableau créé.</p>`;
-                return;
+        function renderSidebarTournaments() {
+                    const groupedTournaments = {
+                        'simple': [],
+                        'double': [],
+                        'mixte': []
+                    };
+        
+                    allTournaments.forEach(t => {
+                        groupedTournaments[t.type].push(t);
+                    });
+        
+                    let sidebarHtml = '';
+        
+                    // Ordre d'affichage des groupes
+                    const groupOrder = ['simple', 'double', 'mixte'];
+                    const groupNames = {
+                        'simple': 'Simple',
+                        'double': 'Double',
+                        'mixte': 'Mixte'
+                    };
+        
+                    groupOrder.forEach(type => {
+                        if (groupedTournaments[type].length > 0) {
+                            sidebarHtml += `
+                            <div class="mt-4 text-gray-200 font-semibold uppercase text-xs tracking-wider">
+                                ${groupNames[type]}
+                            </div>
+                            `;
+                            groupedTournaments[type].forEach(t => {
+                                const emoji = getTypeEmoji(t.type);
+                                sidebarHtml += `
+                                <button data-id="${t.id}"
+                                    class="btn-sidebar-tournament w-full text-left px-3 py-2 rounded-lg hover:bg-[#3A6CB2] transition-colors duration-150 truncate">
+                                    ${emoji} ${t.name}
+                                </button>
+                                `;
+                            });
+                        }
+                    });
+                    sidebarTournamentsList.innerHTML = sidebarHtml;
+    
             }
-            sidebarTournamentsList.innerHTML = allTournaments.map(t => `
-                <button data-id="${t.id}"
-                    class="btn-sidebar-tournament w-full text-left px-3 py-2 rounded-lg hover:bg-gray-600 transition-colors duration-150 truncate">
-                    ${t.name}
-                </button>
-            `).join('');
+            
+            sidebarTournamentsList.innerHTML = allTournaments.map(t => {
+                            const emoji = getTypeEmoji(t.type);
+                            return `
+                            <button data-id="${t.id}"
+                                class="btn-sidebar-tournament w-full text-left px-3 py-2 rounded-lg hover:bg-gray-600 transition-colors duration-150 truncate">
+                                ${emoji} ${t.name}
+                            </button>
+                        `}).join('');
+        
         }
         
         // Gère l'affichage du tableau des participants (Simple OU Paire)
         function renderTournamentDetail() {
             if (!currentTournament) return;
             
-            detailTournamentName.textContent = currentTournament.name;
-            detailTournamentType.textContent = currentTournament.type;
+            const emoji = getTypeEmoji(currentTournament.type);
+            detailTournamentName.textContent = `${emoji} ${currentTournament.name}`;
+            // detailTournamentType.textContent = currentTournament.type; // Supprimé pour éviter le doublon
 
             const participants = currentTournament.participants;
 
@@ -940,7 +3055,7 @@
                         // Ligne Joueur 1
                         participantsTableBody.innerHTML += `
                             <tr class="pair-row hover:bg-gray-50">
-                                <td class="px-6 py-4 w-5 text-gray-400 pair-indicator" rowspan="2">
+                                <td class="px-6 py-4 w-5 text-gray-200 pair-indicator" rowspan="2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                                       <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.006.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 1 1 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.49 5.49 0 0 0 4 13H1s1 0 1-1-1-4-4-4 3.002 4 3.92 4zM4 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4m-2 2a3 3 0 1 1 6 0 3 3 0 0 1-6 0"/>
                                     </svg>
@@ -1020,32 +3135,57 @@
         }
         
         // Remplit les listes déroulantes/checkboxes des modales d'ajout
+        
         function populateParticipantDropdowns() {
             if (!currentTournament) return;
             
+            // 1. Obtenir les joueurs disponibles (comme avant)
             const availablePlayers = getAvailablePlayersForTournament();
-            availablePlayers.sort((a,b) => a.lastName.localeCompare(b.lastName)); // Trier la liste
+            availablePlayers.sort((a,b) => a.lastName.localeCompare(b.lastName)); 
 
             if (currentTournament.type === 'simple') {
-                // Modale Simple (Cases à cocher)
-                if (availablePlayers.length === 0) {
-                    participantCheckboxList.innerHTML = `<p class="text-sm text-gray-500 p-4 text-center">Aucun joueur disponible (vérifiez les inscrits ou leurs 'souhaits').</p>`;
-                    addParticipantSimpleSubmitBtn.disabled = true;
+                
+                // 2. NOUVEAU: Lire la valeur du filtre radio
+                const filterValue = document.querySelector('input[name="simple-participant-gender-filter"]:checked').value;
+                
+                // 3. NOUVEAU: Filtrer la liste des joueurs
+                const filteredAvailablePlayers = availablePlayers.filter(p => {
+                    if (filterValue === 'all') return true;
+                    if (filterValue === 'm') return p.gender === 'm';
+                    if (filterValue === 'f') return p.gender === 'f';
+                    return true;
+                });
+
+                // 4. Gérer l'affichage (en utilisant la liste filtrée)
+                if (filteredAvailablePlayers.length === 0) {
+                    if (availablePlayers.length === 0) {
+                        participantCheckboxList.innerHTML = `<p class="text-sm text-gray-500 p-4 text-center">Aucun joueur disponible (vérifiez les inscrits ou leurs 'souhaits').</p>`;
+                    } else {
+                        // Il y a des joueurs, mais aucun ne correspond au filtre
+                        participantCheckboxList.innerHTML = `<p class="text-sm text-gray-500 p-4 text-center">Aucun joueur ne correspond à ce filtre.</p>`;
+                    }
                 } else {
-                    participantCheckboxList.innerHTML = availablePlayers.map(p => {
+                    // 5. NOUVEAU: Appliquer les couleurs lors du rendu
+                    participantCheckboxList.innerHTML = filteredAvailablePlayers.map(p => {
                         const level = (p.levelSimple || '??').toUpperCase();
+                        // Ajout de la logique de couleur
+                        const genderClass = p.gender === 'f' ? 'text-pink-700' : (p.gender === 'm' ? 'text-blue-700' : 'text-gray-900');
+
                         return `
                         <label class="flex items-center text-sm text-gray-700 p-2 rounded hover:bg-gray-100">
                             <input type="checkbox" data-id="${p.id}" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-3">
-                            ${p.lastName} ${p.firstName} <span class="text-gray-500 ml-2">(${level} / ${p.club})</span>
+                            <span class="${genderClass} font-medium">${p.lastName} ${p.firstName}</span>
+                            <span class="text-gray-500 ml-2">(${level} / ${p.club})</span>
                         </label>
                     `}).join('');
-                    addParticipantSimpleSubmitBtn.disabled = false;
                 }
+                
+                // Le bouton "Ajouter" doit être désactivé SEULEMENT si aucun joueur n'est disponible (indépendamment du filtre)
+                addParticipantSimpleSubmitBtn.disabled = availablePlayers.length === 0;
                 document.getElementById('modal-participant-simple-tournament-name').textContent = currentTournament.name;
 
             } else {
-                // Modale Paire (Dropdowns)
+                // Modale Paire (Dropdowns) - Inchangé
                 const optionsHtml = availablePlayers
                     .map(p => {
                         const level = (currentTournament.type === 'double' ? p.levelDouble : p.levelMixte) || '??';
@@ -1059,6 +3199,7 @@
                 pairAddedSuccess.classList.add('hidden');
             }
         }
+    
 
 
         // --- Navigation et Modales ---
@@ -1069,8 +3210,8 @@
             }
             activeView = viewId;
 
-            navButtons.players.classList.toggle('bg-blue-600', viewId === 'players');
-            navButtons.tournaments.classList.toggle('bg-blue-600', viewId === 'tournaments');
+            navButtons.players.classList.toggle('bg-[#5C8957]', viewId === 'players');
+            navButtons.tournaments.classList.toggle('bg-[#5C8957]', viewId === 'tournaments');
             
             document.querySelectorAll('.btn-sidebar-tournament').forEach(btn => {
                 btn.classList.toggle('bg-gray-700', currentTournament && btn.dataset.id === currentTournament.id);
@@ -1145,6 +3286,12 @@
                 if (!currentTournament) return;
                 populateParticipantDropdowns();
                 if (currentTournament.type === 'simple') {
+                
+                    // NOUVEAU: Réinitialiser le filtre radio sur "Tous"
+                    const allFilter = document.querySelector('input[name="simple-participant-gender-filter"][value="all"]');
+                    if (allFilter) allFilter.checked = true;
+                    
+
                     participantCheckboxList.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
                     showModal('addParticipantSimple');
                 } else {
@@ -1180,6 +3327,14 @@
                     }
                 });
             });
+            // NOUVEL AJOUT: Écouteur pour les filtres radio de la modale Simple
+            document.querySelectorAll('input[name="simple-participant-gender-filter"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    // Quand le filtre change, on rafraîchit la liste des participants
+                    populateParticipantDropdowns();
+                });
+            });
+
 
             // Soumission des formulaires
             document.getElementById('form-add-player').addEventListener('submit', handleAddNewPlayer);
